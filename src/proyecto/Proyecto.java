@@ -6,7 +6,7 @@ package proyecto;
 
 /**
  *
- * @author Ale
+ * @author Ale y Richi :) 
  */
 public class Proyecto {
 
