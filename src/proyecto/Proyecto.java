@@ -16,7 +16,8 @@ public class Proyecto {
     
    
     public static void main(String[] args) {
-        private String hol
+        private String hola;
+                pene 
     }
     
 }
