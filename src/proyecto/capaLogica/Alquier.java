@@ -9,5 +9,17 @@ package proyecto.capaLogica;
  * @author LENOVO
  */
 public class Alquier {
-    
+
+    private String placa;
+    //private  ***** fechaAlquiler ;
+    //private ***** fechaDevolucion ;
+    //private ***** fechaDevolucionReal ;
+    private double kilometrajeInicial;
+    private double kilometrajeFinal;
+    private double montoSeguroObligatorio;
+    private double montoSeguroTerceros;
+    private double montoPorKilometraje;
+    private double montoPorDias;
+    private boolean estadoAlquiler;
+
 }
