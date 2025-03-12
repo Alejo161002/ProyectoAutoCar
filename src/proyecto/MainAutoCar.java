@@ -8,7 +8,7 @@ package proyecto;
  *
  * @author Ale y Richi :) 
  */
-public class Proyecto {
+public class MainAutoCar {
 
     /**
      * @param args the command line arguments
@@ -16,7 +16,6 @@ public class Proyecto {
     
    
     public static void main(String[] args) {
-        private String hola;
                 
     }
     
