@@ -6,7 +6,9 @@ package proyecto;
 
 /**
  *
- * @author Ale y Richi :) 
+ * @autores 
+ * Ricardo Hernández Salas, cedula 119430725
+ * Jose Alejando Jiménez Ugalde, cedula 119400931
  */
 public class MainAutoCar {
 
