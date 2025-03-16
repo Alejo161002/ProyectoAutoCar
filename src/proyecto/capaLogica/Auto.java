@@ -12,21 +12,40 @@ package proyecto.capaLogica;
  */
 public class Auto {
 
-    private String placa;
+    private int placa;
 
     private String marca;
 
-    private String modelo;
-
-    private int annoDeFabricacion;
+    private int modelo;
 
     private Cliente cliente;
 
-    //private tipoDeAuto tipoAuto;
+    private TipoAuto tipoAuto;
 
     private String color;
 
     private double kilometraje;
 
     private boolean estado;
+
+    public Auto(int placa, String marca, int modelo, Cliente cliente, TipoAuto tipoAuto, String color, double kilometraje, boolean estado) {
+        this.placa = placa;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.cliente = cliente;
+        this.tipoAuto = tipoAuto;
+        this.color = color;
+        this.kilometraje = kilometraje;
+        this.estado = estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public double getKilometraje() {
+        return kilometraje;
+    }
+    
+    
 }

@@ -4,18 +4,19 @@
  */
 package proyecto.capaLogica;
 
+import java.time.LocalDateTime;
+
 /**
  *
- * @autores 
- * Ricardo Hernández Salas, cedula 119430725
- * Jose Alejando Jiménez Ugalde, cedula 119400931
+ * @autores Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
  */
 public class Alquier {
 
-    private String placa;
-    //private  ***** fechaAlquiler ;
-    //private ***** fechaDevolucion ;
-    //private ***** fechaDevolucionReal ;
+    private int placa;
+    private LocalDateTime fechaAlquiler;
+    private LocalDateTime fechaDevolucion;
+    private LocalDateTime fechaDevolucionReal;
     private double kilometrajeInicial;
     private double kilometrajeFinal;
     private double montoSeguroObligatorio;
@@ -24,4 +25,34 @@ public class Alquier {
     private double montoPorDias;
     private boolean estadoAlquiler;
 
+    public Alquier(int placa, LocalDateTime fechaAlquiler, LocalDateTime fechaDevolucion, double kilometrajeInicial, double montoSeguroObligatorio, double montoSeguroTerceros ) {
+        this.placa = placa;
+        this.fechaAlquiler = fechaAlquiler;
+        this.fechaDevolucion = fechaDevolucion;
+        this.montoSeguroObligatorio = montoSeguroObligatorio;
+        this.montoSeguroTerceros = montoSeguroTerceros;
+        this.estadoAlquiler = true;
+    }
+    public Alquier(int placa, LocalDateTime fechaAlquiler, LocalDateTime fechaDevolucion, double kilometrajeInicial, double montoSeguroObligatorio ) {
+        this.placa = placa;
+        this.fechaAlquiler = fechaAlquiler;
+        this.fechaDevolucion = fechaDevolucion;
+        this.montoSeguroObligatorio = montoSeguroObligatorio;
+        this.estadoAlquiler = true;
+    }
+
+    public void setFechaDevolucionReal(LocalDateTime fechaDevolucion) {
+        this.fechaDevolucionReal = fechaDevolucion;
+    }
+
+    public void setMontoPorKilometraje(double montoPorKilometraje) {
+        this.montoPorKilometraje = montoPorKilometraje;
+    }
+
+    public void setMontoPorDias(double montoPorDias) {
+        this.montoPorDias = montoPorDias;
+    }
+    
+    
+    
 }
