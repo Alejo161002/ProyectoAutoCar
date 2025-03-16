@@ -53,6 +53,10 @@ public class Alquier {
         this.montoPorDias = montoPorDias;
     }
     
+    public double calcularTotal(){
+       return montoPorDias + montoPorKilometraje + montoSeguroObligatorio + montoSeguroTerceros;
+    }
+    
     
     
 }
