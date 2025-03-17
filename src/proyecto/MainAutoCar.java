@@ -4,6 +4,8 @@
  */
 package proyecto;
 
+import proyecto.capaGrafica.FrmMenu;
+
 /**
  *
  * @autores 
@@ -18,7 +20,9 @@ public class MainAutoCar {
     
    
     public static void main(String[] args) {
-                
+               FrmMenu frmMenu = new FrmMenu();
+               frmMenu.setVisible(true);
+               frmMenu.setLocationRelativeTo(null);
     }
     
 }
