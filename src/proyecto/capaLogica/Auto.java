@@ -47,5 +47,39 @@ public class Auto {
         return kilometraje;
     }
     
+    @Override
+    public String toString(){
+        StringBuilder sb= new StringBuilder();
+        sb.append("El numero de placa del vehiculo es: ");
+        sb.append(placa);
+        sb.append("\n");
+        
+        sb.append("La marca del vehiculo es: ");
+        sb.append(marca);
+        sb.append("\n");
+        
+        sb.append("El modelo del vehiculo es:");
+        sb.append(modelo);
+        sb.append("\n");
+        
+        sb.append("El tipo de cliente es: ");
+        sb.append(cliente);
+        sb.append("\n");
+        
+        sb.append("El tipo del vehiculo es:");
+        sb.append(tipoAuto);
+        sb.append("\n");
+        
+        sb.append("El color del vehiculo es");
+        sb.append(color);
+        sb.append("\n");
+        
+        sb.append("El kilometraje del vehiculo es: ");
+        sb.append(kilometraje);
+        sb.append("\n");    
+        
+        return sb.toString();
+               
+    }
     
 }
