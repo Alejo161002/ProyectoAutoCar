@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * @autores Ricardo Hernández Salas, cedula 119430725 
  * Jose Alejando Jiménez Ugalde, cedula 119400931
  */ 
-public class Alquier {
-
+public class Alquiler {
+    private Auto auto;
     private int placa;
     private LocalDateTime fechaAlquiler;
     private LocalDateTime fechaDevolucion;
@@ -25,7 +25,7 @@ public class Alquier {
     private double montoPorDias;
     private boolean estadoAlquiler;
 
-    public Alquier(int placa, LocalDateTime fechaAlquiler, LocalDateTime fechaDevolucion, double kilometrajeInicial, double montoSeguroObligatorio, double montoSeguroTerceros ) {
+    public Alquiler(int placa, LocalDateTime fechaAlquiler, LocalDateTime fechaDevolucion, double kilometrajeInicial, double montoSeguroObligatorio, double montoSeguroTerceros ) {
         this.placa = placa;
         this.fechaAlquiler = fechaAlquiler;
         this.fechaDevolucion = fechaDevolucion;
@@ -33,7 +33,7 @@ public class Alquier {
         this.montoSeguroTerceros = montoSeguroTerceros;
         this.estadoAlquiler = true;
     }
-    public Alquier(int placa, LocalDateTime fechaAlquiler, LocalDateTime fechaDevolucion, double kilometrajeInicial, double montoSeguroObligatorio ) {
+    public Alquiler(int placa, LocalDateTime fechaAlquiler, LocalDateTime fechaDevolucion, double kilometrajeInicial, double montoSeguroObligatorio ) {
         this.placa = placa;
         this.fechaAlquiler = fechaAlquiler;
         this.fechaDevolucion = fechaDevolucion;

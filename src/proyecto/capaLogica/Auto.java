@@ -28,16 +28,20 @@ public class Auto {
 
     private boolean estado;
 
-    public Auto(int placa, String marca, int modelo, Cliente cliente, TipoAuto tipoAuto, String color, double kilometraje, boolean estado) {
+    public Auto(int placa, String marca, int modelo,  TipoAuto tipoAuto, String color, double kilometraje, boolean estado) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
-        this.cliente = cliente;
         this.tipoAuto = tipoAuto;
         this.color = color;
         this.kilometraje = kilometraje;
         this.estado = estado;
     }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+        
 
     public void setEstado(boolean estado) {
         this.estado = estado;
@@ -46,7 +50,20 @@ public class Auto {
     public double getKilometraje() {
         return kilometraje;
     }
-    
+
+    public TipoAuto getTipoAuto() {
+        return tipoAuto;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public int getModelo() {
+        return modelo;
+    }
+   
+ 
     @Override
     public String toString(){
         StringBuilder sb= new StringBuilder();
