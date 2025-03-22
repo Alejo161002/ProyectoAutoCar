@@ -57,6 +57,11 @@ public class FrmMenu extends javax.swing.JFrame {
         });
 
         btnDevolucion.setText("Devolucion de un vehiculo");
+        btnDevolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolucionActionPerformed(evt);
+            }
+        });
 
         btnReporte.setText("Reportes ");
         btnReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +71,11 @@ public class FrmMenu extends javax.swing.JFrame {
         });
 
         jButton1.setText("Consultar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Salir ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -128,8 +138,28 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         this.dispose();
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(btnAlquilar.isSelected()){
+            FrmAlquiler frmAlquiler = new FrmAlquiler();
+               frmAlquiler.setVisible(true);
+               frmAlquiler.setLocationRelativeTo(null);
+        } 
+        
+        if(btnDevolucion.isSelected()){
+            FrmDevoluccion frmDevoluccion = new FrmDevoluccion();
+               frmDevoluccion.setVisible(true);
+               frmDevoluccion.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed
+        
+    }//GEN-LAST:event_btnDevolucionActionPerformed
 
     /**
      * @param args the command line arguments
