@@ -58,7 +58,12 @@ public class FrmAlquiler extends javax.swing.JFrame {
 
         jLabel4.setText("Marca ");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Honda", "Hiunday", "Nisan", "" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Honda", "Hiunday", "Nisan" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Año");
 
@@ -242,6 +247,10 @@ public class FrmAlquiler extends javax.swing.JFrame {
     private void txtHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHastaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHastaActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
