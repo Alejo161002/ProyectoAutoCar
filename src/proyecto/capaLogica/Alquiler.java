@@ -6,12 +6,14 @@ package proyecto.capaLogica;
 
 import java.time.LocalDateTime;
 import java.time.Duration;
+
 /**
  *
- * @autores Ricardo Hernández Salas, cedula 119430725 
- * Jose Alejando Jiménez Ugalde, cedula 119400931
- */ 
+ * @autores Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
+ */
 public class Alquiler {
+
     private int placa;
     private LocalDateTime fechaAlquiler;
     private LocalDateTime fechaDevolucion;
@@ -25,7 +27,7 @@ public class Alquiler {
     private boolean estadoAlquiler;
     private boolean deseaSeguroTerceros;
 
-    public Alquiler( LocalDateTime fechaAlquiler, LocalDateTime fechaDevolucion, double kilometrajeInicial, boolean seguroTerceros, Auto autoP) {
+    public Alquiler(LocalDateTime fechaAlquiler, LocalDateTime fechaDevolucion, double kilometrajeInicial, boolean seguroTerceros, Auto autoP) {
         this.placa = autoP.getPlaca();
         this.fechaAlquiler = fechaAlquiler;
         this.fechaDevolucion = fechaDevolucion;
@@ -34,47 +36,45 @@ public class Alquiler {
         this.estadoAlquiler = true;
         this.deseaSeguroTerceros = seguroTerceros;
     }
-    
-    private double calcularMontoSeguroObligatorio(Auto autoP){
+
+    private double calcularMontoSeguroObligatorio(Auto autoP) {
         Auto auto = autoP;
-        double monto =0; 
-        double tarifa =0; 
-        switch ( auto.getTipoAuto()){
-            case AUTOMOVIL ->{
-                if ( auto.getModelo()< 1990) {
+        double monto = 0;
+        double tarifa = 0;
+        switch (auto.getTipoAuto()) {
+            case AUTOMOVIL -> {
+                if (auto.getModelo() < 1990) {
                     tarifa = 5000;
-                }else if ( auto.getModelo()>= 1990 &&  auto.getModelo()<=1995) {
+                } else if (auto.getModelo() >= 1990 && auto.getModelo() <= 1995) {
                     tarifa = 10000;
-                }
-                else if ( auto.getModelo()> 1995 &&  auto.getModelo()<=2000) {
+                } else if (auto.getModelo() > 1995 && auto.getModelo() <= 2000) {
                     tarifa = 15000;
-                }else{
+                } else {
                     tarifa = 20000;
                 }
-                
+
             }
             case DOBLE_TRACCION -> {
-                if ( auto.getModelo()< 1990) {
+                if (auto.getModelo() < 1990) {
                     tarifa = 20000;
-                }else if ( auto.getModelo()>= 1990 &&  auto.getModelo()<=1995) {
+                } else if (auto.getModelo() >= 1990 && auto.getModelo() <= 1995) {
                     tarifa = 25000;
-                }
-                else if ( auto.getModelo()> 1995 &&  auto.getModelo()<=2000) {
+                } else if (auto.getModelo() > 1995 && auto.getModelo() <= 2000) {
                     tarifa = 30000;
-                }else{
+                } else {
                     tarifa = 35000;
                 }
-                
+
             }
-            
-                    }
-        
+
+        }
+
         int dias = (int) Duration.between(fechaAlquiler, fechaDevolucion).toDays();
         monto = dias * tarifa;
         return monto;
     }
-    
-    private double calcularSeguroTerceros(){
+
+    private double calcularSeguroTerceros() {
         double monto = 0;
         int dias = (int) Duration.between(fechaAlquiler, fechaDevolucion).toDays();
         if (this.deseaSeguroTerceros) {
@@ -82,7 +82,7 @@ public class Alquiler {
         }
         return monto;
     }
-            
+
     public void setFechaDevolucionReal(LocalDateTime fechaDevolucion) {
         this.fechaDevolucionReal = fechaDevolucion;
     }
@@ -94,22 +94,39 @@ public class Alquiler {
     public void setMontoPorDias(double montoPorDias) {
         this.montoPorDias = montoPorDias;
     }
-    
-    public double calcularTotal(){
-       return montoPorDias + montoPorKilometraje + montoSeguroObligatorio + montoSeguroTerceros;
+
+    public double calcularTotal() {
+        return montoPorDias + montoPorKilometraje + montoSeguroObligatorio + montoSeguroTerceros;
     }
 
     public int getPlaca() {
         return placa;
-    } 
-    
-    public boolean getEstadoAlquiler(){
+    }
+
+    public boolean getEstadoAlquiler() {
         return this.estadoAlquiler;
     }
-    
-    public void calcularMontoPorDias(LocalDateTime fechaDevolucionReal, Auto auto){
+
+    public void calcularMontoPorDias(LocalDateTime fechaDevolucionReal, Auto auto) {
         this.fechaDevolucionReal = fechaDevolucionReal;
-       
+        double tarifa = 0;
+        double monto = 0;
+        switch (auto.getTipoAuto()) {
+            case AUTOMOVIL -> {
+                tarifa = 30000;
+            }
+            case DOBLE_TRACCION -> {
+                tarifa = 50000;
+            }
+        }
+        int dias = (int) Duration.between(fechaAlquiler, this.fechaDevolucionReal).toDays();
+        if (auto.getCliente().getTipo().compareTo(TipoCliente.CORPORATIVO)==0) {
+            monto = (dias *tarifa) - tarifa;
+        }
+        else{
+            monto = dias * tarifa; 
+        }
+        this.montoPorDias = monto;
     }
-    
+
 }

@@ -45,6 +45,10 @@ public class Auto {
     public int getPlaca() {
         return placa;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
         
     
 

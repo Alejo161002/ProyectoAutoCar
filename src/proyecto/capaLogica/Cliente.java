@@ -14,5 +14,16 @@ public class Cliente {
 
     private String cedula;
     private String nombre;
-    //private TipoCliente tipo;
+    private TipoCliente tipo;
+
+    public Cliente(String cedula, String nombre, TipoCliente tipo) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.tipo = tipo;
+    }
+
+    public TipoCliente getTipo() {
+        return tipo;
+    }
+    
 }
