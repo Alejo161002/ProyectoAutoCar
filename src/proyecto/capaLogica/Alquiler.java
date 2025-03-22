@@ -6,6 +6,8 @@ package proyecto.capaLogica;
 
 import java.time.LocalDateTime;
 import java.time.Duration;
+import static proyecto.capaLogica.TipoAuto.AUTOMOVIL;
+import static proyecto.capaLogica.TipoAuto.DOBLE_TRACCION;
 
 /**
  *
@@ -120,13 +122,39 @@ public class Alquiler {
             }
         }
         int dias = (int) Duration.between(fechaAlquiler, this.fechaDevolucionReal).toDays();
-        if (auto.getCliente().getTipo().compareTo(TipoCliente.CORPORATIVO)==0) {
-            monto = (dias *tarifa) - tarifa;
-        }
-        else{
-            monto = dias * tarifa; 
+        if (auto.getCliente().getTipo().compareTo(TipoCliente.CORPORATIVO) == 0) {
+            monto = (dias * tarifa) - tarifa;
+        } else {
+            monto = dias * tarifa;
         }
         this.montoPorDias = monto;
+    }
+
+    public void calcularMontoPorKilometros(Auto auto, double kilometrajeActual) {
+        double monto = 0;
+        double tarifa = 0;
+        double rango = 0;
+        this.kilometrajeFinal = kilometrajeActual;
+        rango = this.kilometrajeFinal - this.kilometrajeInicial;
+        switch (auto.getTipoAuto()) {
+            case AUTOMOVIL -> {
+                tarifa = 500;
+            }
+            case DOBLE_TRACCION -> {
+                tarifa = 700;
+            }
+        }
+        if (auto.getCliente().getTipo().compareTo(TipoCliente.CORPORATIVO) == 0) {
+            if (rango > 400) {
+                monto = tarifa * 400;
+            } else {
+                monto = tarifa * rango;
+            }
+
+        } else {
+            monto = tarifa * rango;
+        }
+        this.montoPorKilometraje = monto;
     }
 
 }
