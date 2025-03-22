@@ -57,6 +57,11 @@ public class FrmMenu extends javax.swing.JFrame {
         });
 
         btnDevolucion.setText("Devolucion de un vehiculo");
+        btnDevolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolucionActionPerformed(evt);
+            }
+        });
 
         btnReporte.setText("Reportes ");
         btnReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +149,17 @@ public class FrmMenu extends javax.swing.JFrame {
                frmAlquiler.setVisible(true);
                frmAlquiler.setLocationRelativeTo(null);
         } 
+        
+        if(btnDevolucion.isSelected()){
+            FrmDevoluccion frmDevoluccion = new FrmDevoluccion();
+               frmDevoluccion.setVisible(true);
+               frmDevoluccion.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed
+        
+    }//GEN-LAST:event_btnDevolucionActionPerformed
 
     /**
      * @param args the command line arguments
