@@ -102,6 +102,44 @@ public class Agencia {
         }
         return fila;
     }
+
+    //sobrecarga del metodo para buscar fila por auto
+    private int buscarFila(Auto auto) {
+        int fila = 0;
+        switch (auto.getPlaca()) {
+            case 1000 -> {
+                fila = 0;
+            }
+            case 2000 -> {
+                fila = 1;
+            }
+            case 3000 -> {
+                fila = 2;
+            }
+            case 4000 -> {
+                fila = 3;
+            }
+            case 5000 -> {
+                fila = 4;
+            }
+            case 6000 -> {
+                fila = 5;
+            }
+            case 7000 -> {
+                fila = 6;
+            }
+            case 8000 -> {
+                fila = 7;
+            }
+            case 9000 -> {
+                fila = 8;
+            }
+            case 10000 -> {
+                fila = 9;
+            }
+        }
+        return fila;
+    }
 //Volver a trabajar en este metodo al aclarar dudas.
 
     public void agregarAlquiler(Alquiler alquiler) {
@@ -118,6 +156,17 @@ public class Agencia {
                 break;
             }
         }
+    }
+
+    public Alquiler buscarAlquiler(Auto auto) {
+        int fila = buscarFila(auto);
+        Alquiler alquiler = null;
+        for (int j = 0; j < alquileres.length; j++) {
+            if (alquileres[fila][j].getEstadoAlquiler()) {
+                return alquileres[fila][j];
+            }
+        }
+        return alquiler;
     }
 
 } // fin de clase 

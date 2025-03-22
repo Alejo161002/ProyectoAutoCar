@@ -103,7 +103,13 @@ public class Alquiler {
         return placa;
     } 
     
+    public boolean getEstadoAlquiler(){
+        return this.estadoAlquiler;
+    }
     
-    
+    public void calcularMontoPorDias(LocalDateTime fechaDevolucionReal, Auto auto){
+        this.fechaDevolucionReal = fechaDevolucionReal;
+       
+    }
     
 }
