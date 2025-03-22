@@ -41,7 +41,12 @@ public class Auto {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public int getPlaca() {
+        return placa;
+    }
         
+    
 
     public void setEstado(boolean estado) {
         this.estado = estado;

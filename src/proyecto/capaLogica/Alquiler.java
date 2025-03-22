@@ -12,7 +12,6 @@ import java.time.Duration;
  * Jose Alejando Jiménez Ugalde, cedula 119400931
  */ 
 public class Alquiler {
-    private Auto auto;
     private int placa;
     private LocalDateTime fechaAlquiler;
     private LocalDateTime fechaDevolucion;
@@ -26,27 +25,28 @@ public class Alquiler {
     private boolean estadoAlquiler;
     private boolean deseaSeguroTerceros;
 
-    public Alquiler(int placa, LocalDateTime fechaAlquiler, LocalDateTime fechaDevolucion, double kilometrajeInicial, boolean seguroTerceros) {
-        this.placa = placa;
+    public Alquiler( LocalDateTime fechaAlquiler, LocalDateTime fechaDevolucion, double kilometrajeInicial, boolean seguroTerceros, Auto autoP) {
+        this.placa = autoP.getPlaca();
         this.fechaAlquiler = fechaAlquiler;
         this.fechaDevolucion = fechaDevolucion;
-        this.montoSeguroObligatorio = calcularMontoSeguroObligatorio();
+        this.montoSeguroObligatorio = calcularMontoSeguroObligatorio(autoP);
         this.montoSeguroTerceros = calcularSeguroTerceros();
         this.estadoAlquiler = true;
         this.deseaSeguroTerceros = seguroTerceros;
     }
     
-    private double calcularMontoSeguroObligatorio(){
+    private double calcularMontoSeguroObligatorio(Auto autoP){
+        Auto auto = autoP;
         double monto =0; 
         double tarifa =0; 
-        switch (this.auto.getTipoAuto()){
+        switch ( auto.getTipoAuto()){
             case AUTOMOVIL ->{
-                if (this.auto.getModelo()< 1990) {
+                if ( auto.getModelo()< 1990) {
                     tarifa = 5000;
-                }else if (this.auto.getModelo()>= 1990 && this.auto.getModelo()<=1995) {
+                }else if ( auto.getModelo()>= 1990 &&  auto.getModelo()<=1995) {
                     tarifa = 10000;
                 }
-                else if (this.auto.getModelo()> 1995 && this.auto.getModelo()<=2000) {
+                else if ( auto.getModelo()> 1995 &&  auto.getModelo()<=2000) {
                     tarifa = 15000;
                 }else{
                     tarifa = 20000;
@@ -54,12 +54,12 @@ public class Alquiler {
                 
             }
             case DOBLE_TRACCION -> {
-                if (this.auto.getModelo()< 1990) {
+                if ( auto.getModelo()< 1990) {
                     tarifa = 20000;
-                }else if (this.auto.getModelo()>= 1990 && this.auto.getModelo()<=1995) {
+                }else if ( auto.getModelo()>= 1990 &&  auto.getModelo()<=1995) {
                     tarifa = 25000;
                 }
-                else if (this.auto.getModelo()> 1995 && this.auto.getModelo()<=2000) {
+                else if ( auto.getModelo()> 1995 &&  auto.getModelo()<=2000) {
                     tarifa = 30000;
                 }else{
                     tarifa = 35000;
@@ -98,6 +98,10 @@ public class Alquiler {
     public double calcularTotal(){
        return montoPorDias + montoPorKilometraje + montoSeguroObligatorio + montoSeguroTerceros;
     }
+
+    public int getPlaca() {
+        return placa;
+    } 
     
     
     
