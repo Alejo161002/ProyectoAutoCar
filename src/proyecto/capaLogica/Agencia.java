@@ -169,5 +169,14 @@ public class Agencia {
         return alquiler;
     }
 
+    public String reporteAgencia() {
+        StringBuilder mensaje = new StringBuilder();
+        for (int i = 0; i < autos.length; i++) {
+            mensaje.append(autos[i].toString());
+            mensaje.append("\n");
+        }
+        return mensaje.toString();
+    }
+
 } // fin de clase 
 
