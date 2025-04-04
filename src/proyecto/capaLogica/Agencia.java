@@ -9,6 +9,7 @@ package proyecto.capaLogica;
  * @autores Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
  * Ugalde, cedula 119400931
  */
+
 public class Agencia {
 
     private Alquiler[][] alquileres;
@@ -37,8 +38,9 @@ public class Agencia {
     public Auto buscarAuto(TipoAuto tipo, String marca, int annoDesde, int annoHasta) {
         Auto auto = null;
         for (int i = 0; i < autos.length; i++) {
-            if (autos[i].getTipoAuto() == tipo && autos[i].getMarca().equalsIgnoreCase(marca) && (autos[i].getModelo() > annoDesde && autos[i].getModelo() < annoHasta)) {
+            if (autos[i].getTipoAuto() == tipo && autos[i].getMarca().equalsIgnoreCase(marca) && (autos[i].getModelo() > annoDesde && autos[i].getModelo() < annoHasta && autos[i].getEstado() == false)) {
                 auto = autos[i];
+                autos[i].setEstado(false);
                 break;
             }
         }
@@ -54,7 +56,6 @@ public class Agencia {
                 auto = autos[i];
                 break;
             }
-
         }
 
         return auto;
@@ -144,14 +145,9 @@ public class Agencia {
 
     public void agregarAlquiler(Alquiler alquiler) {
         int fila = buscarFila(alquiler);
+        boolean flagLleno = false;
         for (int j = 0; j < alquileres[0].length; j++) {
             if (alquileres[fila][j] == null) {
-                alquileres[fila][j] = alquiler;
-                break;
-            }
-        }
-        for (int j = 0; j < alquileres[0].length; j++) {
-            if (alquileres[fila][j] != null) {
                 alquileres[fila][j] = alquiler;
                 break;
             }
@@ -175,6 +171,14 @@ public class Agencia {
             mensaje.append(autos[i].toString());
             mensaje.append("\n");
         }
+        return mensaje.toString();
+    }
+    
+    
+    //En progreso, falta hacer tostring de alquiler;
+    public String reporteAlquileres(int placa){
+        StringBuilder mensaje = new  StringBuilder();
+        
         return mensaje.toString();
     }
 

@@ -156,5 +156,7 @@ public class Alquiler {
         }
         this.montoPorKilometraje = monto;
     }
+    
+    
 
-}
+}//fin de clase 

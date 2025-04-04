@@ -27,6 +27,8 @@ public class Auto {
     private double kilometraje;
 
     private boolean estado;
+    
+    private int cantidadAlquileres;
 
     public Auto(int placa, String marca, int modelo,  TipoAuto tipoAuto, String color, double kilometraje, boolean estado) {
         this.placa = placa;
@@ -41,7 +43,7 @@ public class Auto {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+    
     public int getPlaca() {
         return placa;
     }
@@ -70,6 +72,10 @@ public class Auto {
 
     public int getModelo() {
         return modelo;
+    }
+    
+    public boolean getEstado(){
+        return this.estado;
     }
    
  
