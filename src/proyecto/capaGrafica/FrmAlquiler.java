@@ -5,6 +5,10 @@
 package proyecto.capaGrafica;
 
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import proyecto.capaLogica.Agencia;
+import proyecto.capaLogica.Auto;
+import proyecto.capaLogica.TipoAuto;
 
 /**
  *
@@ -145,9 +149,9 @@ public class FrmAlquiler extends javax.swing.JFrame {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
@@ -157,7 +161,7 @@ public class FrmAlquiler extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 23, Short.MAX_VALUE))))
+                        .addGap(0, 21, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,6 +216,24 @@ public class FrmAlquiler extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Agencia agencia = new Agencia();
+        String tipoAuto = (String) ComboBoxAuto.getSelectedItem();
+        String marca = (String) jComboBox2.getSelectedItem();
+
+        try {
+            int annoDesde = Integer.parseInt(txtDesde.getText());
+            int annoHasta = Integer.parseInt(txtHasta.getText());
+            TipoAuto tipo = tipoAuto.equals("Automovil ") ? TipoAuto.AUTOMOVIL : TipoAuto.DOBLE_TRACCION;
+            Auto auto = agencia.buscarAuto(tipo, marca, annoDesde, annoHasta);
+            if (auto != null) {
+                JOptionPane.showMessageDialog(this, "Vehículo encontrado: " + auto.toString());
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró un vehículo que coincida con los criterios.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese números válidos para los años.");
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtDesdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDesdeActionPerformed
@@ -222,7 +244,9 @@ public class FrmAlquiler extends javax.swing.JFrame {
     private void txtDesdeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDesdeKeyTyped
         // TODO add your handling code here:
         char caracter= evt.getKeyChar();
-        
+        if(txtDesde.getText().length() >=4){
+            evt.consume();
+        }
         if(((caracter < '0' || caracter > '9'))
             &&(caracter != KeyEvent.VK_BACK_SPACE)
             &&(caracter !='.' || txtDesde.getText().contains("."))){
@@ -230,12 +254,13 @@ public class FrmAlquiler extends javax.swing.JFrame {
     }
         
         
-        
     }//GEN-LAST:event_txtDesdeKeyTyped
 
     private void txtHastaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHastaKeyTyped
         // TODO add your handling code here:
-        
+        if(txtHasta.getText().length() >=4){
+            evt.consume();
+        }
         char caracter= evt.getKeyChar();
         if(((caracter < '0' || caracter > '9'))
             &&(caracter != KeyEvent.VK_BACK_SPACE)

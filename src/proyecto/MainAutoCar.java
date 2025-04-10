@@ -5,6 +5,7 @@
 package proyecto;
 
 import proyecto.capaGrafica.FrmMenu;
+import proyecto.capaLogica.Agencia;
 
 /**
  *
@@ -23,6 +24,8 @@ public class MainAutoCar {
                FrmMenu frmMenu = new FrmMenu();
                frmMenu.setVisible(true);
                frmMenu.setLocationRelativeTo(null);
+               Agencia agencia = new Agencia();
+               
     }
     
 }

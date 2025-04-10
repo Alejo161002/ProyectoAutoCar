@@ -138,7 +138,6 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         this.dispose();
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -154,6 +153,11 @@ public class FrmMenu extends javax.swing.JFrame {
             FrmDevoluccion frmDevoluccion = new FrmDevoluccion();
                frmDevoluccion.setVisible(true);
                frmDevoluccion.setLocationRelativeTo(null);
+        }
+        if(btnReporte.isSelected()){
+            FrmReportes frmreporte = new FrmReportes();
+            frmreporte.setVisible(true);
+            frmreporte.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -13,14 +13,14 @@ package proyecto.capaLogica;
 public class Agencia {
 
     private Alquiler[][] alquileres;
-    private Auto[] autos;
+    public Auto[] autos;
 
     public Agencia() {
         alquileres = new Alquiler[10][5];
         llenarAutos();
     }
 
-    private void llenarAutos() {
+    public void llenarAutos() {
         autos = new Auto[10];
         autos[0] = new Auto(1000, "Toyota Corolla", 2010, TipoAuto.AUTOMOVIL, "Gris", 10000, true);
         autos[1] = new Auto(2000, "Honda CRV", 2005, TipoAuto.DOBLE_TRACCION, "Blanco", 200000, true);
