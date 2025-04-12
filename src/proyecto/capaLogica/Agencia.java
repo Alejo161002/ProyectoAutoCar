@@ -4,6 +4,8 @@
  */
 package proyecto.capaLogica;
 
+import java.util.List;
+
 /**
  *
  * @autores Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
@@ -175,10 +177,16 @@ public class Agencia {
     }
     
     
-    //En progreso, falta hacer tostring de alquiler;
     public String reporteAlquileres(int placa){
+        Auto actual = buscarAutoPorPlaca(placa);
+        int fila = buscarFila(actual);
         StringBuilder mensaje = new  StringBuilder();
-        
+        mensaje.append(actual.toString());
+        mensaje.append("\n\n");
+        for (int j = 0; j < alquileres[0].length; j++) {
+        mensaje.append("\t").append(alquileres[fila][j].toString());
+        mensaje.append("\n");
+        }
         return mensaje.toString();
     }
 

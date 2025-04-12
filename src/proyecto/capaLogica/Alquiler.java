@@ -156,7 +156,60 @@ public class Alquiler {
         }
         this.montoPorKilometraje = monto;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        StringBuilder mensaje = new StringBuilder();
+        String estado = this.estadoAlquiler ? "Pendiente" : "Devuelto";
+        mensaje.append("-Alquiler-");
+        mensaje.append("\nEstado: ");
+        mensaje.append("\n");
+        mensaje.append(estado);
+        mensaje.append("\n");
+        mensaje.append("Fecha de inicio: ");
+        mensaje.append("\n");
+        mensaje.append(this.fechaAlquiler);
+        mensaje.append("\n");
+        mensaje.append("Fecha de devolucion inicial: ");
+        mensaje.append("\n");
+        mensaje.append(this.fechaDevolucion);
+        mensaje.append("\n");
+        mensaje.append("Fecha de devolucion real: ");
+        mensaje.append("\n");
+        mensaje.append(this.fechaDevolucionReal);
+        mensaje.append("\n");
+        mensaje.append("Kilometraje inicial: ");
+        mensaje.append("\n");
+        mensaje.append(this.kilometrajeInicial).append("km");
+        mensaje.append("\n");
+        mensaje.append("Kilometraje final: ");
+        mensaje.append("\n");
+        mensaje.append(this.kilometrajeFinal).append("km");
+        mensaje.append("\n");
+        mensaje.append("-Montos-");
+        mensaje.append("\n");
+        mensaje.append("\n");
+        mensaje.append("Monto por días: ");
+        mensaje.append("\n");
+        mensaje.append(this.montoPorDias).append("$");
+        mensaje.append("\n");
+        mensaje.append("Monto por Seguro Obligatorio: ");
+        mensaje.append("\n");
+        mensaje.append(this.montoSeguroObligatorio).append("$");
+        mensaje.append("\n");
+        mensaje.append("Monto por Seguro a Terceros: ");
+        mensaje.append("\n");
+        mensaje.append(this.montoSeguroTerceros).append("$");
+        mensaje.append("\n");
+        mensaje.append("Monto por kilometraje: ");
+        mensaje.append("\n");
+        mensaje.append(this.montoPorKilometraje).append("$");
+        mensaje.append("\n");
+        
+        
+        
+        
+        return mensaje.toString();
+    }
 
 }//fin de clase 
