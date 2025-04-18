@@ -38,17 +38,24 @@ public class Agencia {
     }
 
     public Auto buscarAuto(TipoAuto tipo, String marca, int annoDesde, int annoHasta) {
-        Auto auto = null;
-        for (int i = 0; i < autos.length; i++) {
-            if (autos[i].getTipoAuto() == tipo && autos[i].getMarca().equalsIgnoreCase(marca) && (autos[i].getModelo() > annoDesde && autos[i].getModelo() < annoHasta && autos[i].getEstado() == false)) {
-                auto = autos[i];
-                autos[i].setEstado(false);
-                break;
-            }
-        }
+    for (int i = 0; i < autos.length; i++) {
+        Auto actual = autos[i];
 
-        return auto;
+        if (
+            actual.getTipoAuto() == tipo &&
+            actual.getMarca().toLowerCase().contains(marca.toLowerCase()) &&
+            actual.getModelo() >= annoDesde &&
+            actual.getModelo() <= annoHasta &&
+            actual.getEstado()
+        ) {
+            actual.setEstado(false); 
+            return actual;
+        }
     }
+
+    return null; 
+}
+
 
     // Este metodo sera usado para buscar el auto por placa cuando sea devuelto. 
     public Auto buscarAutoPorPlaca(int placa) {

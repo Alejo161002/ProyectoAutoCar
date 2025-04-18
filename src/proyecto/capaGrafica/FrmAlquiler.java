@@ -6,6 +6,7 @@ package proyecto.capaGrafica;
 
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import proyecto.capaGrafica.FrmMenu;
 import proyecto.capaLogica.Agencia;
 import proyecto.capaLogica.Auto;
 import proyecto.capaLogica.TipoAuto;
@@ -62,7 +63,7 @@ public class FrmAlquiler extends javax.swing.JFrame {
 
         jLabel4.setText("Marca ");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Honda", "Hiunday", "Nisan" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Honda", "Hiunday", "Nissan" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -203,7 +204,8 @@ public class FrmAlquiler extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComboBoxAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxAutoActionPerformed
-        // TODO add your handling code here:
+       
+        
     }//GEN-LAST:event_ComboBoxAutoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -216,23 +218,43 @@ public class FrmAlquiler extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Agencia agencia = new Agencia();
-        String tipoAuto = (String) ComboBoxAuto.getSelectedItem();
-        String marca = (String) jComboBox2.getSelectedItem();
+       
+    
+    Agencia agencia = new Agencia();
+    String tipoAuto = (String) ComboBoxAuto.getSelectedItem();
+    String marca = (String) jComboBox2.getSelectedItem();
 
-        try {
-            int annoDesde = Integer.parseInt(txtDesde.getText());
-            int annoHasta = Integer.parseInt(txtHasta.getText());
-            TipoAuto tipo = tipoAuto.equals("Automovil ") ? TipoAuto.AUTOMOVIL : TipoAuto.DOBLE_TRACCION;
-            Auto auto = agencia.buscarAuto(tipo, marca, annoDesde, annoHasta);
-            if (auto != null) {
-                JOptionPane.showMessageDialog(this, "Vehículo encontrado: " + auto.toString());
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontró un vehículo que coincida con los criterios.");
+    try {
+        int annoDesde = Integer.parseInt(txtDesde.getText());
+        int annoHasta = Integer.parseInt(txtHasta.getText());
+        TipoAuto tipo = tipoAuto.equals("Automovil") ? TipoAuto.AUTOMOVIL : TipoAuto.DOBLE_TRACCION;
+        Auto auto = agencia.buscarAuto(tipo, marca, annoDesde, annoHasta);
+        
+        if (auto != null) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Especificaciones del Auto encontrado:\n");
+            sb.append("Placa: ").append(auto.getPlaca()).append("\n");
+            sb.append("Marca: ").append(auto.getMarca()).append("\n");
+            sb.append("Modelo: ").append(auto.getModelo()).append("\n");
+            sb.append("Tipo de Auto: ").append(auto.getTipoAuto().toString()).append("\n");
+            sb.append("Kilometraje: ").append(auto.getKilometraje()).append(" km\n");
+            sb.append("Estado: ").append(auto.getEstado() ? "Disponible" : "No disponible").append("\n");
+            int option = JOptionPane.showConfirmDialog(this, sb.toString(), 
+                    "Especificaciones del Auto", JOptionPane.OK_CANCEL_OPTION, 
+                    JOptionPane.INFORMATION_MESSAGE);
+            
+            if (option == JOptionPane.OK_OPTION) {
+                FrmInfoCliente frminfo = new FrmInfoCliente();
+                frminfo.setVisible(true);
+                frminfo.setLocationRelativeTo(null);
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese números válidos para los años.");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró un vehículo que coincida con los criterios.");
         }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese números válidos para los años.");
+    }  
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -244,8 +266,8 @@ public class FrmAlquiler extends javax.swing.JFrame {
     private void txtDesdeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDesdeKeyTyped
         // TODO add your handling code here:
         char caracter= evt.getKeyChar();
-        if(txtDesde.getText().length() >=4){
-            evt.consume();
+        if (!Character.isDigit(caracter) || txtDesde.getText().length() >= 4) {
+        evt.consume();
         }
         if(((caracter < '0' || caracter > '9'))
             &&(caracter != KeyEvent.VK_BACK_SPACE)
@@ -258,10 +280,11 @@ public class FrmAlquiler extends javax.swing.JFrame {
 
     private void txtHastaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHastaKeyTyped
         // TODO add your handling code here:
-        if(txtHasta.getText().length() >=4){
-            evt.consume();
-        }
+        
         char caracter= evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtHasta.getText().length() >= 4) {
+        evt.consume();
+        }
         if(((caracter < '0' || caracter > '9'))
             &&(caracter != KeyEvent.VK_BACK_SPACE)
             &&(caracter !='.' || txtHasta.getText().contains("."))){
@@ -275,6 +298,7 @@ public class FrmAlquiler extends javax.swing.JFrame {
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
