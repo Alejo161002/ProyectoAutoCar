@@ -83,6 +83,10 @@ public class Alquiler {
     return this.montoSeguroTerceros;
     }
 
+    public void setDeseaSeguroTerceros(boolean deseaSeguroTerceros) {
+        this.deseaSeguroTerceros = deseaSeguroTerceros;
+    }
+
     
 
     public void setFechaDevolucionReal(LocalDateTime fechaDevolucion) {

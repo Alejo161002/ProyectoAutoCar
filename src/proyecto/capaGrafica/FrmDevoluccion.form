@@ -93,7 +93,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ingresa el Kilometraje Final del Vehiculo"/>
+        <Property name="text" type="java.lang.String" value="Ingresa el kilometraje final del Vehiculo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">

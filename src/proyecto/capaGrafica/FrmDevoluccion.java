@@ -48,7 +48,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
 
         jLabel2.setText("Ingresar la placa del Automovil ");
 
-        jLabel3.setText("Ingresa el Kilometraje Final del Vehiculo");
+        jLabel3.setText("Ingresa el kilometraje final del Vehiculo");
 
         jButton1.setText("Buscar ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

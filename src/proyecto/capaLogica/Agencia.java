@@ -154,7 +154,6 @@ public class Agencia {
 
     public void agregarAlquiler(Alquiler alquiler) {
         int fila = buscarFila(alquiler);
-        boolean flagLleno = false;
         for (int j = 0; j < alquileres[0].length; j++) {
             if (alquileres[fila][j] == null) {
                 alquileres[fila][j] = alquiler;
@@ -165,7 +164,6 @@ public class Agencia {
 
     public Alquiler buscarAlquiler(Auto auto) {
         int fila = buscarFila(auto);
-        Alquiler alquiler = null;
         for (int j = 0; j < alquileres[0].length; j++) {
             if (alquileres[fila][j]!=null && alquileres[fila][j].getEstadoAlquiler()) {
                 return alquileres[fila][j];
@@ -188,7 +186,7 @@ public class Agencia {
         Auto actual = buscarAutoPorPlaca(placa);
         int fila = buscarFila(actual);
         StringBuilder mensaje = new  StringBuilder();
-        mensaje.append(actual.toString());
+        mensaje.append(actual.reporte());
         mensaje.append("\n\n");
         for (int j = 0; j < alquileres[0].length; j++) {
         mensaje.append("\t").append(alquileres[fila][j].toString());
