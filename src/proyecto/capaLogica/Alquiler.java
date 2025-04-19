@@ -6,6 +6,7 @@ package proyecto.capaLogica;
 
 import java.time.LocalDateTime;
 import java.time.Duration;
+import java.time.format.DateTimeFormatter;
 import static proyecto.capaLogica.TipoAuto.AUTOMOVIL;
 import static proyecto.capaLogica.TipoAuto.DOBLE_TRACCION;
 
@@ -76,14 +77,13 @@ public class Alquiler {
         return monto;
     }
 
-    private double calcularSeguroTerceros() {
-        double monto = 0;
-        int dias = (int) Duration.between(fechaAlquiler, fechaDevolucion).toDays();
-        if (this.deseaSeguroTerceros) {
-            monto = dias * 25;
-        }
-        return monto;
+    public double calcularSeguroTerceros() {
+    int dias = (int) Duration.between(fechaAlquiler, fechaDevolucion).toDays();
+    this.montoSeguroTerceros = deseaSeguroTerceros ? dias * 25 : 0;
+    return this.montoSeguroTerceros;
     }
+
+    
 
     public void setFechaDevolucionReal(LocalDateTime fechaDevolucion) {
         this.fechaDevolucionReal = fechaDevolucion;
@@ -159,6 +159,7 @@ public class Alquiler {
 
     @Override
     public String toString() {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         StringBuilder mensaje = new StringBuilder();
         String estado = this.estadoAlquiler ? "Pendiente" : "Devuelto";
         mensaje.append("-Alquiler-");
