@@ -17,12 +17,14 @@ import proyecto.capaLogica.TipoAuto;
  */
 public class FrmAlquiler extends javax.swing.JFrame {
     private Auto autoSeleccionado; // Ya viene desde FrmAlquiler
-
+    private Agencia agencia;
     /**
      * Creates new form Alquiler
      */
-    public FrmAlquiler() {
+    public FrmAlquiler(Agencia agencia) {
         initComponents();
+        this.agencia = agencia;
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -214,9 +216,6 @@ public class FrmAlquiler extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       
-    
-    Agencia agencia = new Agencia();
     String tipoAuto = (String) ComboBoxAuto.getSelectedItem();
     String marca = (String) jComboBox2.getSelectedItem();
 
@@ -242,7 +241,7 @@ public class FrmAlquiler extends javax.swing.JFrame {
             if (option == JOptionPane.OK_OPTION) {
                 FrmInfoCliente frminfo = new FrmInfoCliente(auto,agencia);
                 frminfo.setVisible(true);
-                frminfo.setLocationRelativeTo(null);
+               dispose();
             }
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró un vehículo que coincida con los criterios.");
@@ -328,7 +327,7 @@ public class FrmAlquiler extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmAlquiler().setVisible(true);
+                
             }
         });
     }

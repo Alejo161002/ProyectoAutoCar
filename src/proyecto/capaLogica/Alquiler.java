@@ -169,15 +169,15 @@ public class Alquiler {
         mensaje.append("\n");
         mensaje.append("Fecha de inicio: ");
         mensaje.append("\n");
-        mensaje.append(this.fechaAlquiler);
+        mensaje.append(this.fechaAlquiler.format(formato));
         mensaje.append("\n");
         mensaje.append("Fecha de devolucion inicial: ");
         mensaje.append("\n");
-        mensaje.append(this.fechaDevolucion);
+        mensaje.append(this.fechaDevolucion.format(formato));
         mensaje.append("\n");
         mensaje.append("Fecha de devolucion real: ");
         mensaje.append("\n");
-        mensaje.append(this.fechaDevolucionReal);
+        mensaje.append(this.fechaDevolucionReal.format(formato));
         mensaje.append("\n");
         mensaje.append("Kilometraje inicial: ");
         mensaje.append("\n");

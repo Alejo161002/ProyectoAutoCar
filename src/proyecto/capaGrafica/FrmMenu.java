@@ -5,6 +5,7 @@
 package proyecto.capaGrafica;
 
 import javax.swing.ButtonGroup;
+import proyecto.capaLogica.Agencia;
 
 /**
  *
@@ -18,7 +19,7 @@ public class FrmMenu extends javax.swing.JFrame {
      */
     
     private ButtonGroup seleccion;
-    
+    private Agencia agencia;
     public FrmMenu() {
         initComponents();
         seleccion = new ButtonGroup();
@@ -26,6 +27,7 @@ public class FrmMenu extends javax.swing.JFrame {
         seleccion.add(btnAlquilar);
         seleccion.add(btnDevolucion);
         seleccion.add(btnReporte);
+        this.agencia = new Agencia();
     }
 
     /**
@@ -144,18 +146,18 @@ public class FrmMenu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(btnAlquilar.isSelected()){
-            FrmAlquiler frmAlquiler = new FrmAlquiler();
+            FrmAlquiler frmAlquiler = new FrmAlquiler(agencia);
                frmAlquiler.setVisible(true);
                frmAlquiler.setLocationRelativeTo(null);
         } 
         
         if(btnDevolucion.isSelected()){
-            FrmDevoluccion frmDevoluccion = new FrmDevoluccion();
+            FrmDevoluccion frmDevoluccion = new FrmDevoluccion(agencia);
                frmDevoluccion.setVisible(true);
                frmDevoluccion.setLocationRelativeTo(null);
         }
         if(btnReporte.isSelected()){
-            FrmReportes frmreporte = new FrmReportes();
+            FrmReportes frmreporte = new FrmReportes(agencia);
             frmreporte.setVisible(true);
             frmreporte.setLocationRelativeTo(null);
         }

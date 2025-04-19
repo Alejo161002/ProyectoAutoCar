@@ -26,4 +26,10 @@ public class Cliente {
         return tipo;
     }
     
+    @Override
+    public String toString(){
+        return String.format("Nombre: %s    |  Cedula: %s   |  Tipo: %s" , nombre,cedula,tipo);
+               
+    }
+    
 }

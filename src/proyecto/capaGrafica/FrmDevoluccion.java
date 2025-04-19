@@ -19,8 +19,10 @@ public class FrmDevoluccion extends javax.swing.JFrame {
     /**
      * Creates new form FrmDevoluccion
      */
-    public FrmDevoluccion() {
+    private Agencia agencia;
+    public FrmDevoluccion(Agencia agencia) {
         initComponents();
+        this.agencia = agencia;
     }
 
     /**
@@ -38,7 +40,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtPlaca = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtKilometrajeFinal = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +48,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
 
         jLabel2.setText("Ingresar la placa del Automovil ");
 
-        jLabel3.setText("Ingresa el Kilometraje Actual del vehiculo ");
+        jLabel3.setText("Ingresa el Kilometraje Final del Vehiculo");
 
         jButton1.setText("Buscar ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,24 +84,25 @@ public class FrmDevoluccion extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(107, 107, 107)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPlaca))))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(txtKilometrajeFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +116,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtKilometrajeFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -150,18 +153,24 @@ public class FrmDevoluccion extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         Agencia agencia = new Agencia();
     int placa = Integer.parseInt(txtPlaca.getText()); 
+    double kilometrajeFinal = Double.parseDouble(txtKilometrajeFinal.getText());
     LocalDateTime fechaDevolucion = LocalDateTime.now(); 
-    Alquiler alquiler = agencia.buscarAlquiler(agencia.buscarAutoPorPlaca(placa));
+    
+    var auto = agencia.buscarAutoPorPlaca(placa);
+    Alquiler alquiler = agencia.buscarAlquiler(auto);
     
     if (alquiler != null) {
         alquiler.setFechaDevolucionReal(fechaDevolucion);
-        JOptionPane.showMessageDialog(this, "Vehículo devuelto con éxito.");
+        alquiler.calcularMontoPorKilometros(auto, kilometrajeFinal);
+        auto.setEstado(true);
+        JOptionPane.showMessageDialog(this, alquiler.toString(), "Devolucion realizada con exito ",JOptionPane.INFORMATION_MESSAGE);
+        
     } else {
         JOptionPane.showMessageDialog(this, "No se encontró un alquiler activo para el vehículo.");
     }
-
+    
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -194,7 +203,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmDevoluccion().setVisible(true);
+               
             }
         });
     }
@@ -205,7 +214,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtKilometrajeFinal;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 }

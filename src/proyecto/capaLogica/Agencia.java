@@ -166,12 +166,12 @@ public class Agencia {
     public Alquiler buscarAlquiler(Auto auto) {
         int fila = buscarFila(auto);
         Alquiler alquiler = null;
-        for (int j = 0; j < alquileres.length; j++) {
-            if (alquileres[fila][j].getEstadoAlquiler()) {
+        for (int j = 0; j < alquileres[0].length; j++) {
+            if (alquileres[fila][j]!=null && alquileres[fila][j].getEstadoAlquiler()) {
                 return alquileres[fila][j];
             }
         }
-        return alquiler;
+        return null;
     }
 
     public String reporteAgencia() {

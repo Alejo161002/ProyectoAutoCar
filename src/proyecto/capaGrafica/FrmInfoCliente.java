@@ -129,6 +129,11 @@ public class FrmInfoCliente extends javax.swing.JFrame {
         });
 
         BttnRegresar.setText("Regresar");
+        BttnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BttnRegresarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Cedula");
 
@@ -262,13 +267,12 @@ public class FrmInfoCliente extends javax.swing.JFrame {
             String nombre = txtNombre.getText().trim();
             String cedula = txtCedula.getText().trim();
             TipoCliente tipoCliente= bttnEmpresarial.isSelected() ? TipoCliente.CORPORATIVO: TipoCliente.REGULAR;
-            Cliente cliente = new Cliente(cedula,nombre, tipoCliente);
+            Cliente cliente = new Cliente(cedula, nombre, tipoCliente);
             autoSeleccionado.setCliente(cliente);
             
             double kilometrajeInicial = autoSeleccionado.getKilometraje();
             boolean deseaSeguroTerceros = bttnSi.isSelected();
             Alquiler alquiler = new Alquiler(fechaAlquiler, fechaDevolucion, kilometrajeInicial, deseaSeguroTerceros, autoSeleccionado);
-            agencia.agregarAlquiler(alquiler);
             if(deseaSeguroTerceros == true){
                 alquiler.calcularSeguroTerceros();
             }
@@ -283,6 +287,13 @@ public class FrmInfoCliente extends javax.swing.JFrame {
     }
 
     }//GEN-LAST:event_bttnAlquilarActionPerformed
+
+    private void BttnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BttnRegresarActionPerformed
+        // TODO add your handling code here:
+        FrmAlquiler frmAlquiler = new FrmAlquiler(agencia);
+               frmAlquiler.setVisible(true);
+               frmAlquiler.setLocationRelativeTo(null);
+    }//GEN-LAST:event_BttnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
