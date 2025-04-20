@@ -38,6 +38,7 @@ public class Alquiler {
         this.montoSeguroTerceros = calcularSeguroTerceros();
         this.estadoAlquiler = true;
         this.deseaSeguroTerceros = seguroTerceros;
+        this.kilometrajeInicial = autoP.getKilometraje();
     }
 
     private double calcularMontoSeguroObligatorio(Auto autoP) {
@@ -83,9 +84,6 @@ public class Alquiler {
     return this.montoSeguroTerceros;
     }
 
-    public void setDeseaSeguroTerceros(boolean deseaSeguroTerceros) {
-        this.deseaSeguroTerceros = deseaSeguroTerceros;
-    }
 
     
 
@@ -179,6 +177,43 @@ public class Alquiler {
         mensaje.append("\n");
         mensaje.append(this.fechaDevolucion.format(formato));
         mensaje.append("\n");
+        mensaje.append("Kilometraje inicial: ");
+        mensaje.append("\n");
+        mensaje.append(this.kilometrajeInicial).append("km");
+        mensaje.append("\n");
+        mensaje.append("-Montos-");
+        mensaje.append("\n");
+        mensaje.append("Monto por Seguro Obligatorio: ");
+        mensaje.append("\n");
+        mensaje.append("$").append(this.montoSeguroObligatorio);
+        mensaje.append("\n");
+        mensaje.append("Monto por Seguro a Terceros: ");
+        mensaje.append("\n");
+        mensaje.append("$").append(this.montoSeguroTerceros);
+        mensaje.append("\n");
+        
+        
+        
+        
+        return mensaje.toString();
+    }
+    public String reporte() {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        StringBuilder mensaje = new StringBuilder();
+        String estado = this.estadoAlquiler ? "Pendiente" : "Devuelto";
+        mensaje.append("-Alquiler-");
+        mensaje.append("\nEstado: ");
+        mensaje.append("\n");
+        mensaje.append(estado);
+        mensaje.append("\n");
+        mensaje.append("Fecha de inicio: ");
+        mensaje.append("\n");
+        mensaje.append(this.fechaAlquiler.format(formato));
+        mensaje.append("\n");
+        mensaje.append("Fecha de devolucion inicial: ");
+        mensaje.append("\n");
+        mensaje.append(this.fechaDevolucion.format(formato));
+        mensaje.append("\n");
         mensaje.append("Fecha de devolucion real: ");
         mensaje.append("\n");
         mensaje.append(this.fechaDevolucionReal.format(formato));
@@ -196,19 +231,19 @@ public class Alquiler {
         mensaje.append("\n");
         mensaje.append("Monto por días: ");
         mensaje.append("\n");
-        mensaje.append(this.montoPorDias).append("$");
+        mensaje.append("$").append(this.montoPorDias);
         mensaje.append("\n");
         mensaje.append("Monto por Seguro Obligatorio: ");
         mensaje.append("\n");
-        mensaje.append(this.montoSeguroObligatorio).append("$");
+        mensaje.append("$").append(this.montoSeguroObligatorio);
         mensaje.append("\n");
         mensaje.append("Monto por Seguro a Terceros: ");
         mensaje.append("\n");
-        mensaje.append(this.montoSeguroTerceros).append("$");
+        mensaje.append("$").append(this.montoSeguroTerceros);
         mensaje.append("\n");
         mensaje.append("Monto por kilometraje: ");
         mensaje.append("\n");
-        mensaje.append(this.montoPorKilometraje).append("$");
+        mensaje.append("$").append(this.montoPorKilometraje);
         mensaje.append("\n");
         
         

@@ -75,7 +75,7 @@ public class FrmInfoCliente extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         bttnPersonal = new javax.swing.JRadioButton();
         bttnEmpresarial = new javax.swing.JRadioButton();
-        bttnAlquilar = new javax.swing.JButton();
+        btnAlquilar = new javax.swing.JButton();
         BttnRegresar = new javax.swing.JButton();
         txtMes = new javax.swing.JTextField();
         txtAnnio = new javax.swing.JTextField();
@@ -109,10 +109,10 @@ public class FrmInfoCliente extends javax.swing.JFrame {
 
         bttnEmpresarial.setText("Empresarial ");
 
-        bttnAlquilar.setText("Alquilar ");
-        bttnAlquilar.addActionListener(new java.awt.event.ActionListener() {
+        btnAlquilar.setText("Alquilar ");
+        btnAlquilar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttnAlquilarActionPerformed(evt);
+                btnAlquilarActionPerformed(evt);
             }
         });
 
@@ -141,7 +141,7 @@ public class FrmInfoCliente extends javax.swing.JFrame {
                                         .addGap(9, 9, 9)
                                         .addComponent(jLabel2))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(bttnAlquilar)
+                                        .addComponent(btnAlquilar)
                                         .addComponent(jLabel5)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,21 +212,15 @@ public class FrmInfoCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BttnRegresar)
-                            .addComponent(bttnAlquilar)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(9, 9, 9)))
+                            .addComponent(btnAlquilar)))
+                    .addComponent(jLabel5))
                 .addGap(42, 42, 42))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDiaActionPerformed
-
-    private void bttnAlquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnAlquilarActionPerformed
+    private void btnAlquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlquilarActionPerformed
         // TODO add your handling code here:
         try {
             LocalDateTime fechaAlquiler = LocalDateTime.now();
@@ -244,17 +238,17 @@ public class FrmInfoCliente extends javax.swing.JFrame {
             double kilometrajeInicial = autoSeleccionado.getKilometraje();
             boolean deseaSeguroTerceros = bttnSi.isSelected();
             Alquiler alquiler = new Alquiler(fechaAlquiler, fechaDevolucion, kilometrajeInicial, deseaSeguroTerceros, autoSeleccionado);
-            if(deseaSeguroTerceros == true){
-                alquiler.setDeseaSeguroTerceros(true);
-            }
+            alquiler.calcularSeguroTerceros();
             agencia.agregarAlquiler(alquiler);
+            
+            JOptionPane.showMessageDialog(this, alquiler.toString());
         this.dispose(); 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Error al crear el alquiler. Verificá los datos." + e.getMessage());
         e.printStackTrace();
     }
 
-    }//GEN-LAST:event_bttnAlquilarActionPerformed
+    }//GEN-LAST:event_btnAlquilarActionPerformed
 
     private void BttnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BttnRegresarActionPerformed
         // TODO add your handling code here:
@@ -262,6 +256,10 @@ public class FrmInfoCliente extends javax.swing.JFrame {
                frmAlquiler.setVisible(true);
                frmAlquiler.setLocationRelativeTo(null);
     }//GEN-LAST:event_BttnRegresarActionPerformed
+
+    private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDiaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,7 +298,7 @@ public class FrmInfoCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BttnRegresar;
-    private javax.swing.JButton bttnAlquilar;
+    private javax.swing.JButton btnAlquilar;
     private javax.swing.JRadioButton bttnEmpresarial;
     private javax.swing.JRadioButton bttnNO;
     private javax.swing.JRadioButton bttnPersonal;
