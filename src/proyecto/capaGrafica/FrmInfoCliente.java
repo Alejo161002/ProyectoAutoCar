@@ -5,6 +5,7 @@
 package proyecto.capaGrafica;
 
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import proyecto.capaLogica.Auto;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -86,6 +87,12 @@ public class FrmInfoCliente extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("KM actual:");
 
         jLabel3.setText("Ingrese la fecha aproximada de entrega");
@@ -93,6 +100,11 @@ public class FrmInfoCliente extends javax.swing.JFrame {
         txtDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDiaActionPerformed(evt);
+            }
+        });
+        txtDia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDiaKeyTyped(evt);
             }
         });
 
@@ -123,7 +135,25 @@ public class FrmInfoCliente extends javax.swing.JFrame {
             }
         });
 
+        txtMes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMesKeyTyped(evt);
+            }
+        });
+
+        txtAnnio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnnioKeyTyped(evt);
+            }
+        });
+
         jLabel7.setText("Cedula");
+
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,6 +290,70 @@ public class FrmInfoCliente extends javax.swing.JFrame {
     private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDiaActionPerformed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        
+        char caracter= evt.getKeyChar();
+        if (!Character.isAlphabetic(caracter) && !Character.isSpaceChar(caracter)) {
+        evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+        // TODO add your handling code here:
+        
+        char caracter= evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtCedula.getText().length() >= 9) {
+        evt.consume();
+        }
+        if(((caracter < '0' || caracter > '9'))
+            &&(caracter != KeyEvent.VK_BACK_SPACE)
+            &&(caracter !='.' || txtCedula.getText().contains("."))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void txtDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaKeyTyped
+        // TODO add your handling code here:
+        
+        char caracter= evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtDia.getText().length() >= 2) {
+        evt.consume();
+        }
+        if(((caracter < '0' || caracter > '9'))
+            &&(caracter != KeyEvent.VK_BACK_SPACE)
+            &&(caracter !='.' || txtDia.getText().contains("."))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDiaKeyTyped
+
+    private void txtMesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMesKeyTyped
+        // TODO add your handling code here:
+        char caracter= evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtMes.getText().length() >= 2) {
+        evt.consume();
+        }
+        if(((caracter < '0' || caracter > '9'))
+            &&(caracter != KeyEvent.VK_BACK_SPACE)
+            &&(caracter !='.' || txtMes.getText().contains("."))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMesKeyTyped
+
+    private void txtAnnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnnioKeyTyped
+        // TODO add your handling code here:
+        char caracter= evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtAnnio.getText().length() >= 4) {
+        evt.consume();
+        }
+        if(((caracter < '0' || caracter > '9'))
+            &&(caracter != KeyEvent.VK_BACK_SPACE)
+            &&(caracter !='.' || txtAnnio.getText().contains("."))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtAnnioKeyTyped
 
     /**
      * @param args the command line arguments
