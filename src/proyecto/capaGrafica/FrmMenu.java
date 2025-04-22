@@ -149,7 +149,7 @@ public class FrmMenu extends javax.swing.JFrame {
             FrmAlquiler frmAlquiler = new FrmAlquiler(agencia);
                frmAlquiler.setVisible(true);
                frmAlquiler.setLocationRelativeTo(null);
-               dispose();
+               
         } 
         
         if(btnDevolucion.isSelected()){
