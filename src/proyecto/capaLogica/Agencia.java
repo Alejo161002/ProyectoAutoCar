@@ -193,8 +193,14 @@ public class Agencia {
         mensaje.append(actual.reporte());
         mensaje.append("\n\n");
         for (int j = 0; j < alquileres[0].length; j++) {
-        mensaje.append("\t").append(alquileres[fila][j].toString());
-        mensaje.append("\n");
+            if (alquileres[fila][j] != null) {
+                mensaje.append("\t").append(alquileres[fila][j].toString());
+                mensaje.append("\n");
+            } else {
+                mensaje.append("No se encuentran alquileres registrados del vehículo.");
+                break;
+            }
+        
         }
         return mensaje.toString();
     }
