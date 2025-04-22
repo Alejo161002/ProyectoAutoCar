@@ -52,7 +52,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 51, 102));
         jLabel1.setText("Tico Rent Car S.A.");
 
-        btnAlquilar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAlquilar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAlquilar.setText("Alquilar un vehiculo ");
         btnAlquilar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +60,7 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
-        btnDevolucion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnDevolucion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDevolucion.setText("Devolucion de un vehiculo");
         btnDevolucion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +68,7 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
-        btnReporte.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnReporte.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnReporte.setText("Reportes ");
         btnReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +77,7 @@ public class FrmMenu extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(0, 123, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(242, 242, 242));
         jButton1.setText("Consultar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +87,7 @@ public class FrmMenu extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(200, 35, 51));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(51, 51, 51));
         jButton2.setText("Salir ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
