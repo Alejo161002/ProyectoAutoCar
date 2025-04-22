@@ -197,7 +197,7 @@ public class Agencia {
                 mensaje.append("\t").append(alquileres[fila][j].toString());
                 mensaje.append("\n");
             } else {
-                mensaje.append("No se encuentran alquileres registrados del vehículo.");
+                mensaje.append("Fin del reporte.");
                 break;
             }
         
