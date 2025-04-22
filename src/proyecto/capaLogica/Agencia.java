@@ -160,7 +160,11 @@ public class Agencia {
                 break;
             }
         }
-    }
+        alquileres[fila][0] = alquiler;
+        
+        
+        
+    }// fin de metodo
 
     public Alquiler buscarAlquiler(Auto auto) {
         int fila = buscarFila(auto);
