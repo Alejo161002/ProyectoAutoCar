@@ -6,9 +6,8 @@ package proyecto.capaLogica;
 
 /**
  *
- * @autores 
- * Ricardo Hernández Salas, cedula 119430725
- * Jose Alejando Jiménez Ugalde, cedula 119400931
+ * @autores Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
  */
 public class Auto {
 
@@ -27,10 +26,10 @@ public class Auto {
     private double kilometraje;
 
     private boolean estado;
-    
+
     private int cantidadAlquileres;
 
-    public Auto(int placa, String marca, int modelo,  TipoAuto tipoAuto, String color, double kilometraje, boolean estado) {
+    public Auto(int placa, String marca, int modelo, TipoAuto tipoAuto, String color, double kilometraje, boolean estado) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
@@ -43,7 +42,7 @@ public class Auto {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+
     public int getPlaca() {
         return placa;
     }
@@ -51,8 +50,6 @@ public class Auto {
     public Cliente getCliente() {
         return cliente;
     }
-        
-    
 
     public void setEstado(boolean estado) {
         this.estado = estado;
@@ -73,78 +70,96 @@ public class Auto {
     public int getModelo() {
         return modelo;
     }
-    
-    public boolean getEstado(){
+
+    public boolean getEstado() {
         return this.estado;
     }
-   
- 
+
     @Override
-    public String toString(){
-        StringBuilder sb= new StringBuilder();
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
         sb.append("El numero de placa del vehiculo es: ");
         sb.append(placa);
         sb.append("\n");
-        
+        sb.append("-Información del cliente-");
+        sb.append("\n");
+        if (this.cliente != null) {
+            sb.append(cliente.toString());
+
+        } else {
+
+            sb.append("Sin cliente registrado.");
+        }
+        sb.append("\n");
+
         sb.append("La marca del vehiculo es: ");
         sb.append(marca);
         sb.append("\n");
-        
+
         sb.append("El modelo del vehiculo es: ");
         sb.append(modelo);
         sb.append("\n");
-        
-        
+
         sb.append("El tipo del vehiculo es:");
         sb.append(tipoAuto);
         sb.append("\n");
-        
+
         sb.append("El color del vehiculo es: ");
         sb.append(color);
         sb.append("\n");
-        
+
         sb.append("El kilometraje del vehiculo es: ");
         sb.append(kilometraje);
         sb.append(" km");
-        sb.append("\n");    
-        
+        sb.append("\n");
+
         return sb.toString();
-               
+
     }
-    
-    public String reporte(){
-        StringBuilder sb= new StringBuilder();
+
+    public String reporte() {
+        StringBuilder sb = new StringBuilder();
         sb.append("El numero de placa del vehiculo es: ");
         sb.append(placa);
         sb.append("\n");
-        
+        sb.append("-Información del cliente-");
+        sb.append("\n");
+        if (this.cliente != null) {
+            sb.append(cliente.toString());
+
+        } else {
+
+            sb.append("Sin cliente registrado.");
+        }
+        sb.append("\n");
+
         sb.append("La marca del vehiculo es: ");
         sb.append(marca);
         sb.append("\n");
-        
+
         sb.append("El modelo del vehiculo es: ");
         sb.append(modelo);
         sb.append("\n");
-        
+
         sb.append("El tipo de cliente es: ");
         sb.append(cliente);
         sb.append("\n");
-        
+
         sb.append("El tipo del vehiculo es:");
         sb.append(tipoAuto);
         sb.append("\n");
-        
+
         sb.append("El color del vehiculo es: ");
         sb.append(color);
         sb.append("\n");
-        
+
         sb.append("El kilometraje del vehiculo es: ");
         sb.append(kilometraje);
         sb.append(" km");
-        sb.append("\n");    
-        
+        sb.append("\n");
+
         return sb.toString();
-               
+
     }
-    
+
 }
