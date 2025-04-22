@@ -149,18 +149,22 @@ public class FrmMenu extends javax.swing.JFrame {
             FrmAlquiler frmAlquiler = new FrmAlquiler(agencia);
                frmAlquiler.setVisible(true);
                frmAlquiler.setLocationRelativeTo(null);
+               dispose();
         } 
         
         if(btnDevolucion.isSelected()){
             FrmDevoluccion frmDevoluccion = new FrmDevoluccion(agencia);
                frmDevoluccion.setVisible(true);
                frmDevoluccion.setLocationRelativeTo(null);
+               dispose();
         }
         if(btnReporte.isSelected()){
             FrmReportes frmreporte = new FrmReportes(agencia);
             frmreporte.setVisible(true);
             frmreporte.setLocationRelativeTo(null);
+            dispose();
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed

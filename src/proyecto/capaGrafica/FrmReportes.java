@@ -50,12 +50,17 @@ public class FrmReportes extends javax.swing.JFrame {
         });
 
         bttnRegresar.setText("Regresar");
+        bttnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnRegresarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Reportes");
 
         btnTodos.setText("Consultar todos los vehiculos ");
 
-        btnPlaca.setText("Consultar por placa");
+        btnPlaca.setText("Consultar por alquiler placa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +115,13 @@ public class FrmReportes extends javax.swing.JFrame {
             frmAlquileres.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bttnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnRegresarActionPerformed
+        // TODO add your handling code here:
+        FrmMenu frmMenu = new FrmMenu();
+               frmMenu.setVisible(true);
+               frmMenu.setLocationRelativeTo(null);
+    }//GEN-LAST:event_bttnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
