@@ -125,6 +125,10 @@ public class FrmReportePlaca extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        FrmReportes frmReportes= new FrmReportes(agencia);
+        frmReportes.setVisible(true);
+        frmReportes.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
@@ -155,14 +159,15 @@ public class FrmReportePlaca extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
             }
         });
     }
-
+*/
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton jButton1;
