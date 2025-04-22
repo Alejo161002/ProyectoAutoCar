@@ -88,12 +88,7 @@ public class FrmReportesAgencia extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-    StringBuilder reporte = new StringBuilder();
-    for (Auto auto : agencia.autos) {
-        reporte.append(auto.toString()).append("\n\n");
-    }
-    
-    jTextArea1.setText(reporte.toString()); 
+    jTextArea1.setText(agencia.reporteAgencia()); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
