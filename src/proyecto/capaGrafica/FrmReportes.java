@@ -105,7 +105,7 @@ public class FrmReportes extends javax.swing.JFrame {
         }
         
         if(btnPlaca.isSelected()){
-            FrmReporteAlquileres frmAlquileres = new FrmReporteAlquileres(agencia);
+            FrmReportePlaca frmAlquileres = new FrmReportePlaca(agencia);
             frmAlquileres.setVisible(true);
             frmAlquileres.setLocationRelativeTo(null);
         }

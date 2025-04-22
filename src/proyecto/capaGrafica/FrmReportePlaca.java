@@ -10,13 +10,13 @@ import proyecto.capaLogica.Agencia;
  *
  * @author Ale
  */
-public class FrmReporteAlquileres extends javax.swing.JFrame {
+public class FrmReportePlaca extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmReporteAlquileres
      */
     private Agencia agencia;
-    public FrmReporteAlquileres(Agencia agencia) {
+    public FrmReportePlaca(Agencia agencia) {
         initComponents();
         this.agencia = agencia ;
     }
@@ -39,8 +39,6 @@ public class FrmReporteAlquileres extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Ingresa la Placa ");
-
-        txtConsultar.setText("jTextField1");
 
         jButton1.setText("Consultar");
 
@@ -102,14 +100,15 @@ public class FrmReporteAlquileres extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmReporteAlquileres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmReportePlaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmReporteAlquileres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmReportePlaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmReporteAlquileres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmReportePlaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmReporteAlquileres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmReportePlaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
