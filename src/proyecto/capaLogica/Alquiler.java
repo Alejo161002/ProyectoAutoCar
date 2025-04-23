@@ -252,4 +252,9 @@ public class Alquiler {
         return mensaje.toString();
     }
 
+    public void setEstadoAlquiler(boolean estadoAlquiler) {
+        this.estadoAlquiler = estadoAlquiler;
+    }
+
+    
 }//fin de clase 

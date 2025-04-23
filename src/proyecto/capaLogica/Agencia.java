@@ -175,6 +175,15 @@ public class Agencia {
         }
         return null;
     }
+    public Alquiler devolverAuto(Auto auto){
+        int fila = buscarFila(auto);
+        for (int j = alquileres[0].length; j >= 0; j--) {
+            if (alquileres[fila][j]!=null && alquileres[fila][j].getEstadoAlquiler()) {
+                return alquileres[fila][j];
+            }
+        }
+        return null;
+    }
 
     public String reporteAgencia() {
         StringBuilder mensaje = new StringBuilder();
@@ -204,6 +213,8 @@ public class Agencia {
         }
         return mensaje.toString();
     }
+    
+    
 
 } // fin de clase 
 

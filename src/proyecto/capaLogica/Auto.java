@@ -162,4 +162,10 @@ public class Auto {
 
     }
 
+    public void setKilometraje(double kilometraje) {
+        this.kilometraje = kilometraje;
+    }
+    
+    
+
 }
