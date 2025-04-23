@@ -175,15 +175,19 @@ public class FrmDevoluccion extends javax.swing.JFrame {
         // TODO add your handling code here:
     int placa = Integer.parseInt(txtPlaca.getText()); 
     double kilometrajeFinal = Double.parseDouble(txtKilometrajeFinal.getText());
-    LocalDateTime fechaDevolucion = LocalDateTime.now(); 
+    int dias = Integer.parseInt(txtDia.getText());
+    int annio = Integer.parseInt(txtAnnio.getText());
+    int mes = Integer.parseInt(txtMes.getText());
+    LocalDateTime fechaDevolucion = LocalDateTime.of(annio, mes, dias, 10, 0);
     
     var auto = agencia.buscarAutoPorPlaca(placa);
-    Alquiler alquiler = agencia.buscarAlquiler(auto);
+    Alquiler alquiler = agencia.devolverAuto(auto);
     
     if (alquiler != null) {
         alquiler.setFechaDevolucionReal(fechaDevolucion);
-        alquiler.calcularMontoPorKilometros(auto, kilometrajeFinal);
+        alquiler.calcularMontoPorKilometros(auto, kilometrajeFinal );
         auto.setEstado(true);
+        alquiler.setEstadoAlquiler(false);
         JOptionPane.showMessageDialog(this, alquiler.toString(), "Devolucion realizada con exito ",JOptionPane.INFORMATION_MESSAGE);
         
     } else {
