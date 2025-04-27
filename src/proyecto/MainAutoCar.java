@@ -21,10 +21,10 @@ public class MainAutoCar {
     
    
     public static void main(String[] args) {
-               FrmMenu frmMenu = new FrmMenu();
+               Agencia agencia = new Agencia();
+               FrmMenu frmMenu = new FrmMenu(agencia);
                frmMenu.setVisible(true);
                frmMenu.setLocationRelativeTo(null);
-               Agencia agencia = new Agencia();
                
     }
     

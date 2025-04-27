@@ -349,7 +349,10 @@ public class FrmInfoCliente extends javax.swing.JFrame {
             agencia.agregarAlquiler(alquiler);
             
             JOptionPane.showMessageDialog(this, alquiler.toString());
-        this.dispose(); 
+            FrmMenu frmMenu = new FrmMenu(agencia);
+               frmMenu.setVisible(true);
+               frmMenu.setLocationRelativeTo(null);
+               dispose();
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Error al crear el alquiler. Verificá los datos." + e.getMessage());
         e.printStackTrace();

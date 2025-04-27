@@ -100,7 +100,7 @@ public class Auto {
         sb.append(modelo);
         sb.append("\n");
 
-        sb.append("El tipo del vehiculo es:");
+        sb.append("El tipo del vehiculo es: ");
         sb.append(tipoAuto);
         sb.append("\n");
 
@@ -122,6 +122,7 @@ public class Auto {
         sb.append("El numero de placa del vehiculo es: ");
         sb.append(placa);
         sb.append("\n");
+        sb.append("\n");
         sb.append("-Información del cliente-");
         sb.append("\n");
         if (this.cliente != null) {
@@ -132,6 +133,7 @@ public class Auto {
             sb.append("Sin cliente registrado.");
         }
         sb.append("\n");
+        sb.append("\n");
 
         sb.append("La marca del vehiculo es: ");
         sb.append(marca);
@@ -141,11 +143,7 @@ public class Auto {
         sb.append(modelo);
         sb.append("\n");
 
-        sb.append("El tipo de cliente es: ");
-        sb.append(cliente);
-        sb.append("\n");
-
-        sb.append("El tipo del vehiculo es:");
+        sb.append("El tipo del vehiculo es: ");
         sb.append(tipoAuto);
         sb.append("\n");
 

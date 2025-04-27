@@ -177,7 +177,7 @@ public class Agencia {
     }
     public Alquiler devolverAuto(Auto auto){
         int fila = buscarFila(auto);
-        for (int j = alquileres[0].length; j >= 0; j--) {
+        for (int j = alquileres[0].length-1; j >= 0; j--) {
             if (alquileres[fila][j]!=null && alquileres[fila][j].getEstadoAlquiler()) {
                 return alquileres[fila][j];
             }
@@ -203,7 +203,7 @@ public class Agencia {
         mensaje.append("\n\n");
         for (int j = 0; j < alquileres[0].length; j++) {
             if (alquileres[fila][j] != null) {
-                mensaje.append("\t").append(alquileres[fila][j].toString());
+                mensaje.append("\t").append(alquileres[fila][j].reporte());
                 mensaje.append("\n");
             } else {
                 mensaje.append("Fin del reporte.");

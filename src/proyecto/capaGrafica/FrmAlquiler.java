@@ -16,8 +16,10 @@ import proyecto.capaLogica.TipoAuto;
  * @author Ale
  */
 public class FrmAlquiler extends javax.swing.JFrame {
+
     private Auto autoSeleccionado; // Ya viene desde FrmAlquiler
     private Agencia agencia;
+
     /**
      * Creates new form Alquiler
      */
@@ -90,9 +92,9 @@ public class FrmAlquiler extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("hasta");
+        jLabel7.setText("hasta:");
 
-        jLabel8.setText("Desde");
+        jLabel8.setText("Desde:");
 
         txtDesde.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txtDesde.addActionListener(new java.awt.event.ActionListener() {
@@ -129,15 +131,14 @@ public class FrmAlquiler extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ComboBoxAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ComboBoxAuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(jLabel1))
+                        .addGap(82, 82, 82)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(43, 43, 43)
@@ -152,19 +153,19 @@ public class FrmAlquiler extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(169, 169, 169)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(72, 72, 72)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(16, 37, Short.MAX_VALUE))))
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtHasta))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(43, 43, 43)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(169, 169, 169)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(72, 72, 72)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(37, 37, 37))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,12 +183,13 @@ public class FrmAlquiler extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addComponent(txtDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel8)
+                        .addComponent(txtDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver)
@@ -202,79 +204,82 @@ public class FrmAlquiler extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComboBoxAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxAutoActionPerformed
-       
-        
+
+
     }//GEN-LAST:event_ComboBoxAutoActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
-        
-               this.dispose();
+        FrmMenu frmMenu = new FrmMenu(agencia);
+        frmMenu.setVisible(true);
+        frmMenu.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
         // TODO add your handling code here:
-    String tipoAuto = (String) ComboBoxAuto.getSelectedItem();
-    String marca = (String) jComboBox2.getSelectedItem();
+        String tipoAuto = (String) ComboBoxAuto.getSelectedItem();
+        String marca = (String) jComboBox2.getSelectedItem();
 
-    try {
-        int annoDesde = Integer.parseInt(txtDesde.getText());
-        int annoHasta = Integer.parseInt(txtHasta.getText());
-        TipoAuto tipo = tipoAuto.equals("Automovil") ? TipoAuto.AUTOMOVIL: TipoAuto.DOBLE_TRACCION;
-        Auto auto = agencia.buscarAuto(tipo, marca, annoDesde, annoHasta);
-        
-        if (auto != null) {
-            int option = JOptionPane.showConfirmDialog(this, auto.toString(), 
-                    "Especificaciones del Auto", JOptionPane.OK_CANCEL_OPTION, 
-                    JOptionPane.INFORMATION_MESSAGE);
-            
-            if (option == JOptionPane.OK_OPTION) {
-                FrmInfoCliente frminfo = new FrmInfoCliente(auto,agencia);
-                frminfo.setVisible(true);
-               this.dispose();
+        try {
+            int annoDesde = Integer.parseInt(txtDesde.getText());
+            int annoHasta = Integer.parseInt(txtHasta.getText());
+            TipoAuto tipo = tipoAuto.equals("Automovil") ? TipoAuto.AUTOMOVIL : TipoAuto.DOBLE_TRACCION;
+            Auto auto = agencia.buscarAuto(tipo, marca, annoDesde, annoHasta);
+
+            if (auto != null) {
+                int option = JOptionPane.showConfirmDialog(this, auto.toString(),
+                        "Especificaciones del Auto", JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                if (option == JOptionPane.OK_OPTION) {
+                    FrmInfoCliente frminfo = new FrmInfoCliente(auto, agencia);
+                    frminfo.setVisible(true);
+                    frminfo.setLocationRelativeTo(this);
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró un vehículo que coincida con los criterios.");
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró un vehículo que coincida con los criterios.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese números válidos para los años.");
         }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese números válidos para los años.");
-    }  
 
 
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void txtDesdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDesdeActionPerformed
         // TODO add your handling code here:
-         
+
     }//GEN-LAST:event_txtDesdeActionPerformed
 
     private void txtDesdeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDesdeKeyTyped
         // TODO add your handling code here:
-        char caracter= evt.getKeyChar();
+        char caracter = evt.getKeyChar();
         if (!Character.isDigit(caracter) || txtDesde.getText().length() >= 4) {
-        evt.consume();
-        }
-        if(((caracter < '0' || caracter > '9'))
-            &&(caracter != KeyEvent.VK_BACK_SPACE)
-            &&(caracter !='.' || txtDesde.getText().contains("."))){
             evt.consume();
-    }
-        
-        
+        }
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtDesde.getText().contains("."))) {
+            evt.consume();
+        }
+
+
     }//GEN-LAST:event_txtDesdeKeyTyped
 
     private void txtHastaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHastaKeyTyped
         // TODO add your handling code here:
-        
-        char caracter= evt.getKeyChar();
+
+        char caracter = evt.getKeyChar();
         if (!Character.isDigit(caracter) || txtHasta.getText().length() >= 4) {
-        evt.consume();
-        }
-        if(((caracter < '0' || caracter > '9'))
-            &&(caracter != KeyEvent.VK_BACK_SPACE)
-            &&(caracter !='.' || txtHasta.getText().contains("."))){
             evt.consume();
-    }
+        }
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtHasta.getText().contains("."))) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtHastaKeyTyped
 
     private void txtHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHastaActionPerformed
@@ -283,7 +288,7 @@ public class FrmAlquiler extends javax.swing.JFrame {
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
@@ -317,7 +322,7 @@ public class FrmAlquiler extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }

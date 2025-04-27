@@ -20,14 +20,14 @@ public class FrmMenu extends javax.swing.JFrame {
     
     private ButtonGroup seleccion;
     private Agencia agencia;
-    public FrmMenu() {
+    public FrmMenu(Agencia agencia) {
         initComponents();
         seleccion = new ButtonGroup();
         btnAlquilar.setSelected(true);
         seleccion.add(btnAlquilar);
         seleccion.add(btnDevolucion);
         seleccion.add(btnReporte);
-        this.agencia = new Agencia();
+        this.agencia = agencia;
     }
 
     /**
@@ -50,7 +50,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel1.setText("Tico Rent Car S.A.");
+        jLabel1.setText("Tico Rent a Car S.A.");
 
         btnAlquilar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAlquilar.setText("Alquilar un vehiculo ");
@@ -104,15 +104,16 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAlquilar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnDevolucion)
-                                .addComponent(btnReporte, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(btnAlquilar)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnDevolucion)
+                            .addComponent(btnReporte, javax.swing.GroupLayout.Alignment.LEADING))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -134,7 +135,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -159,6 +160,7 @@ public class FrmMenu extends javax.swing.JFrame {
             FrmAlquiler frmAlquiler = new FrmAlquiler(agencia);
                frmAlquiler.setVisible(true);
                frmAlquiler.setLocationRelativeTo(null);
+               dispose();
                
         } 
         
@@ -214,7 +216,7 @@ public class FrmMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmMenu().setVisible(true);
+               // new FrmMenu().setVisible(true);
             }
         });
     }

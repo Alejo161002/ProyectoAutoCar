@@ -118,7 +118,7 @@ public class FrmReportes extends javax.swing.JFrame {
 
     private void bttnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnRegresarActionPerformed
         // TODO add your handling code here:
-        FrmMenu frmMenu = new FrmMenu();
+        FrmMenu frmMenu = new FrmMenu(agencia);
                frmMenu.setVisible(true);
                frmMenu.setLocationRelativeTo(null);
                dispose();
