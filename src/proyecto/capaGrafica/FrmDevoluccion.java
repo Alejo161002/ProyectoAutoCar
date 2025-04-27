@@ -56,7 +56,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
 
         jLabel3.setText("Ingresa el kilometraje final del Vehiculo");
 
-        btnBuscar.setText("Buscar ");
+        btnBuscar.setText("Devolver alquiler");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -218,7 +218,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
         auto.setEstado(true);
         auto.setCliente(null);
         alquiler.setEstadoAlquiler(false);
-        this.dispose();
+        
     } else {
         JOptionPane.showMessageDialog(this, "No se encontró un alquiler activo para el vehículo.");
     }

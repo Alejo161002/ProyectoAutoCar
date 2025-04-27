@@ -11,9 +11,10 @@ import proyecto.capaLogica.Auto;
  *
  * @author Z20863
  */
-
 public class FrmReportesAgencia extends javax.swing.JFrame {
+
     private Agencia agencia;
+
     /**
      * Creates new form FrmReportes
      */
@@ -88,15 +89,16 @@ public class FrmReportesAgencia extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-    jTextArea1.setText(agencia.reporteAgencia()); 
+        jTextArea1.setText(agencia.reporteAgencia());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         FrmMenu frmMenu = new FrmMenu(agencia);
-               frmMenu.setVisible(true);
-               frmMenu.setLocationRelativeTo(null);
-               dispose();
+        FrmReportes frmReportes = new FrmReportes(agencia);
+        frmReportes.setVisible(true);
+        frmReportes.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -130,7 +132,7 @@ public class FrmReportesAgencia extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              
+
             }
         });
     }
