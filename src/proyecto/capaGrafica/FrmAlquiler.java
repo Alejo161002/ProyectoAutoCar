@@ -208,10 +208,8 @@ public class FrmAlquiler extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        FrmMenu frmMenu = new FrmMenu();
-               frmMenu.setVisible(true);
-               frmMenu.setLocationRelativeTo(null);
+        
+               this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
@@ -233,7 +231,7 @@ public class FrmAlquiler extends javax.swing.JFrame {
             if (option == JOptionPane.OK_OPTION) {
                 FrmInfoCliente frminfo = new FrmInfoCliente(auto,agencia);
                 frminfo.setVisible(true);
-               dispose();
+               this.dispose();
             }
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró un vehículo que coincida con los criterios.");

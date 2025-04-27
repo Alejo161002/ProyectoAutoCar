@@ -121,6 +121,7 @@ public class FrmReportes extends javax.swing.JFrame {
         FrmMenu frmMenu = new FrmMenu();
                frmMenu.setVisible(true);
                frmMenu.setLocationRelativeTo(null);
+               dispose();
     }//GEN-LAST:event_bttnRegresarActionPerformed
 
     /**

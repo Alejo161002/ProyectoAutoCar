@@ -359,9 +359,11 @@ public class FrmInfoCliente extends javax.swing.JFrame {
 
     private void BttnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BttnRegresarActionPerformed
         // TODO add your handling code here:
+        
         FrmAlquiler frmAlquiler = new FrmAlquiler(agencia);
                frmAlquiler.setVisible(true);
                frmAlquiler.setLocationRelativeTo(null);
+               this.dispose();
     }//GEN-LAST:event_BttnRegresarActionPerformed
 
     private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
