@@ -52,7 +52,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel1.setText("Devoluccion de un Auto ");
+        jLabel1.setText("Devolucion de un Auto ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setText("Ingresar la placa del Automovil ");
@@ -93,6 +93,16 @@ public class FrmDevoluccion extends javax.swing.JFrame {
         });
 
         txtKilometrajeFinal.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtKilometrajeFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtKilometrajeFinalActionPerformed(evt);
+            }
+        });
+        txtKilometrajeFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtKilometrajeFinalKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setText("Fecha de Devolucion");
@@ -103,10 +113,25 @@ public class FrmDevoluccion extends javax.swing.JFrame {
                 txtDiaActionPerformed(evt);
             }
         });
+        txtDia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDiaKeyTyped(evt);
+            }
+        });
 
         txtMes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtMes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMesKeyTyped(evt);
+            }
+        });
 
         txtAnnio.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtAnnio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnnioKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("/");
 
@@ -117,46 +142,42 @@ public class FrmDevoluccion extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btnBuscar)
+                            .addGap(58, 58, 58)
+                            .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(49, 49, 49)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtAnnio, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(txtKilometrajeFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtKilometrajeFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(46, 46, 46)
-                                        .addComponent(jLabel4))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel5)
-                                .addGap(5, 5, 5)
-                                .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel6)
-                                .addGap(5, 5, 5)
-                                .addComponent(txtAnnio, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBuscar)
-                                .addGap(38, 38, 38)
-                                .addComponent(btnRegresar)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(39, 39, 39))))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel1)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,26 +186,29 @@ public class FrmDevoluccion extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(txtKilometrajeFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAnnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar)
-                    .addComponent(btnRegresar))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,11 +222,13 @@ public class FrmDevoluccion extends javax.swing.JFrame {
 
     private void txtPlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlacaKeyTyped
         // TODO add your handling code here:
-        char caracter= evt.getKeyChar();
-   
-        if(((caracter < '0' || caracter > '9'))
-         &&(caracter != KeyEvent.VK_BACK_SPACE)
-            &&(caracter !='.' || txtPlaca.getText().contains("."))){
+        char caracter = evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtPlaca.getText().length() >= 6) {
+            evt.consume();
+        }
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtPlaca.getText().contains("."))) {
             evt.consume();
         }
     }//GEN-LAST:event_txtPlacaKeyTyped
@@ -216,14 +242,19 @@ public class FrmDevoluccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-    int placa = Integer.parseInt(txtPlaca.getText()); 
-    double kilometrajeFinal = Double.parseDouble(txtKilometrajeFinal.getText());
+        // TODO add your handling code here:   
     int dias = Integer.parseInt(txtDia.getText());
     int annio = Integer.parseInt(txtAnnio.getText());
     int mes = Integer.parseInt(txtMes.getText());
+    java.time.LocalDate fechaIngresada = java.time.LocalDate.of(annio, mes, dias);
+    java.time.LocalDate hoy = java.time.LocalDate.now();
     LocalDateTime fechaDevolucion = LocalDateTime.of(annio, mes, dias, 10, 0);
+    if(fechaIngresada.isBefore(hoy)){
+    JOptionPane.showMessageDialog(this, "No se puede seleccionar un facha anterior de hoy ");
+    }
     
+    int placa = Integer.parseInt(txtPlaca.getText()); 
+    double kilometrajeFinal = Double.parseDouble(txtKilometrajeFinal.getText());
     var auto = agencia.buscarAutoPorPlaca(placa);
     Alquiler alquiler = agencia.devolverAuto(auto);
     
@@ -247,6 +278,65 @@ public class FrmDevoluccion extends javax.swing.JFrame {
     private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDiaActionPerformed
+
+    private void txtKilometrajeFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKilometrajeFinalKeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtKilometrajeFinal.getText().length() >= 8) {
+            evt.consume();
+        }
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtKilometrajeFinal.getText().contains("."))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtKilometrajeFinalKeyTyped
+
+    private void txtDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaKeyTyped
+        // TODO add your handling code here:
+        char caracter= evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtDia.getText().length() >= 2) {
+        evt.consume();
+        }
+        if(((caracter < '0' || caracter > '9'))
+            &&(caracter != KeyEvent.VK_BACK_SPACE)
+            &&(caracter !='.' || txtDia.getText().contains("."))){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtDiaKeyTyped
+
+    private void txtMesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMesKeyTyped
+        // TODO add your handling code here:
+        char caracter= evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtMes.getText().length() >= 2) {
+        evt.consume();
+        }
+        if(((caracter < '0' || caracter > '9'))
+            &&(caracter != KeyEvent.VK_BACK_SPACE)
+            &&(caracter !='.' || txtMes.getText().contains("."))){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtMesKeyTyped
+
+    private void txtAnnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnnioKeyTyped
+        // TODO add your handling code here:
+        char caracter= evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtAnnio.getText().length() >= 2) {
+        evt.consume();
+        }
+        if(((caracter < '0' || caracter > '9'))
+            &&(caracter != KeyEvent.VK_BACK_SPACE)
+            &&(caracter !='.' || txtAnnio.getText().contains("."))){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtAnnioKeyTyped
+
+    private void txtKilometrajeFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKilometrajeFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtKilometrajeFinalActionPerformed
 
     /**
      * @param args the command line arguments

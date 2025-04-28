@@ -4,6 +4,7 @@
  */
 package proyecto.capaGrafica;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import proyecto.capaLogica.Agencia;
 
@@ -43,9 +44,15 @@ public class FrmReportePlaca extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel1.setText("Ingresa la Placa ");
 
+        txtConsultar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtConsultarActionPerformed(evt);
+            }
+        });
+        txtConsultar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtConsultarKeyTyped(evt);
             }
         });
 
@@ -58,6 +65,7 @@ public class FrmReportePlaca extends javax.swing.JFrame {
         });
 
         txtResultado.setColumns(20);
+        txtResultado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtResultado.setRows(5);
         jScrollPane1.setViewportView(txtResultado);
 
@@ -104,7 +112,7 @@ public class FrmReportePlaca extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRegresar)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
@@ -116,12 +124,16 @@ public class FrmReportePlaca extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int placa = Integer.parseInt(txtConsultar.getText());
-        
-        if (txtConsultar.getText() != null) {
-        txtResultado.setText(agencia.reporteAlquileres(placa));
-        }else{
-        JOptionPane.showConfirmDialog(this, "No se encontro ningun alquiler para el vehiculos seleccionado");
+         try {
+        int placa = Integer.parseInt(txtConsultar.getText().trim());
+        String resultado = agencia.reporteAlquileres(placa);
+            if (resultado == null || resultado.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No se encontró ningún alquiler para el vehículo seleccionado.");
+                } else {
+             txtResultado.setText(resultado);
+            }
+         } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese una placa válida (solo números).", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -132,6 +144,20 @@ public class FrmReportePlaca extends javax.swing.JFrame {
         frmReportes.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void txtConsultarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConsultarKeyTyped
+        // TODO add your handling code here:
+         char caracter = evt.getKeyChar();
+        if (!Character.isDigit(caracter) || txtConsultar.getText().length() >= 6) {
+            evt.consume();
+        }
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtConsultar.getText().contains("."))) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txtConsultarKeyTyped
 
     /**
      * @param args the command line arguments
