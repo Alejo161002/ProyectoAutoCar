@@ -243,6 +243,17 @@ public class FrmAlquiler extends javax.swing.JFrame {
         try {
             int annoDesde = Integer.parseInt(txtDesde.getText());
             int annoHasta = Integer.parseInt(txtHasta.getText());
+            
+            if (annoDesde < 1950 || annoDesde > 2025) {
+            JOptionPane.showMessageDialog(this, "Unicamente se pueden ingresar años desde 1950");
+            return;
+        }
+        if (annoHasta < 1950 || annoHasta > 2025) {
+            JOptionPane.showMessageDialog(this, "Se permite unicamente el ingreso de vehiculos inferiores o iguales al año 2025");
+            return;
+        }
+            
+            
             TipoAuto tipo = tipoAuto.equals("Automovil") ? TipoAuto.AUTOMOVIL : TipoAuto.DOBLE_TRACCION;
             Auto auto = agencia.buscarAuto(tipo, marca, annoDesde, annoHasta);
 
