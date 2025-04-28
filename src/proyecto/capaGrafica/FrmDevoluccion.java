@@ -50,10 +50,14 @@ public class FrmDevoluccion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
         jLabel1.setText("Devoluccion de un Auto ");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setText("Ingresar la placa del Automovil ");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel3.setText("Ingresa el kilometraje final del Vehiculo");
 
         btnBuscar.setText("Devolver alquiler");
@@ -70,6 +74,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
             }
         });
 
+        txtPlaca.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtPlaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPlacaActionPerformed(evt);
@@ -81,6 +86,9 @@ public class FrmDevoluccion extends javax.swing.JFrame {
             }
         });
 
+        txtKilometrajeFinal.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setText("Fecha de Devolucion");
 
         txtDia.setText("DD");
@@ -135,17 +143,17 @@ public class FrmDevoluccion extends javax.swing.JFrame {
                                 .addGap(5, 5, 5)
                                 .addComponent(txtAnnio, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(41, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,7 +170,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
                     .addComponent(txtAnnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(btnRegresar))

@@ -325,7 +325,16 @@ public class FrmInfoCliente extends javax.swing.JFrame {
             int dia = Integer.parseInt(txtDia.getText());
             int mes = Integer.parseInt(txtMes.getText());
             int anio = Integer.parseInt(txtAnnio.getText());
-            LocalDateTime fechaDevolucion = LocalDateTime.of(anio, mes, dia, 10, 0);
+            
+            LocalDate fechaDevolucion = LocalDate.of(anio, mes, dia);
+            LocalDate hoy = LocalDate.now();
+            
+            if (fechaDevolucion.isBefore(hoy)) {
+            JOptionPane.showMessageDialog(this, "La fecha de entrega no puede ser anterior a hoy.", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
+            
+            LocalDateTime fechaDevolucionConHora = LocalDateTime.of(anio, mes, dia, 10, 0);
            
             String nombre = txtNombre.getText().trim();
             String cedula = txtCedula.getText().trim();
@@ -335,7 +344,7 @@ public class FrmInfoCliente extends javax.swing.JFrame {
             
             double kilometrajeInicial = autoSeleccionado.getKilometraje();
             boolean deseaSeguroTerceros = bttnSi.isSelected();
-            Alquiler alquiler = new Alquiler(fechaAlquiler, fechaDevolucion, kilometrajeInicial, deseaSeguroTerceros, autoSeleccionado);
+            Alquiler alquiler = new Alquiler(fechaAlquiler, fechaDevolucionConHora, kilometrajeInicial, deseaSeguroTerceros, autoSeleccionado);
             alquiler.calcularSeguroTerceros();
             agencia.agregarAlquiler(alquiler);
             
