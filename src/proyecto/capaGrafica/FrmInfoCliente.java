@@ -321,6 +321,13 @@ public class FrmInfoCliente extends javax.swing.JFrame {
 
     private void btnAlquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlquilarActionPerformed
         // TODO add your handling code here:
+    String nombre = txtNombre.getText().trim();
+    String cedula = txtCedula.getText().trim();
+
+    if (nombre.isEmpty() || cedula.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Los campos de la cedula y nombre tiene que tener datos", "Campos obligatorios", JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
         try {
             LocalDateTime fechaAlquiler = LocalDateTime.now();
             int dia = Integer.parseInt(txtDia.getText());
@@ -336,15 +343,14 @@ public class FrmInfoCliente extends javax.swing.JFrame {
         }
             
             LocalDate hoy = LocalDate.now();
-            if (fechaDevolucion.isBefore(hoy)) {
-            JOptionPane.showMessageDialog(this, "La fecha de entrega no puede ser anterior a hoy.", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
+            if (!fechaDevolucion.isAfter(hoy)) {
+            JOptionPane.showMessageDialog(this, "La fecha de entrega debe ser posterior al dia de hoy", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
             return; 
         }
             
             LocalDateTime fechaDevolucionConHora = LocalDateTime.of(anio, mes, dia, 23, 59);
            
-            String nombre = txtNombre.getText().trim();
-            String cedula = txtCedula.getText().trim();
+            
             TipoCliente tipoCliente= bttnEmpresarial.isSelected() ? TipoCliente.CORPORATIVO: TipoCliente.REGULAR;
             Cliente cliente = new Cliente(cedula, nombre, tipoCliente);
             autoSeleccionado.setCliente(cliente);
