@@ -20,41 +20,42 @@ import proyecto.capaLogica.TipoCliente;
 
 /**
  *
- * @author Ricardo Hernández Salas, cedula 119430725
- * Jose Alejando Jiménez Ugalde, cedula 119400931
+ * @author Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
  */
 public class FrmInfoCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmInfoCliente
-     * @param 
-     * 
+     *
+     * @param
+     *
      */
     private Auto autoSeleccionado;
     private Agencia agencia;
-    
+
     public FrmInfoCliente(Auto auto, Agencia agencia) {
         initComponents();
         this.autoSeleccionado = auto;
         this.agencia = agencia;
-         LocalDate hoy = LocalDate.now();
+        LocalDate hoy = LocalDate.now();
         txtDia.setText(String.valueOf(hoy.getDayOfMonth()));
         txtMes.setText(String.valueOf(hoy.getMonthValue()));
         txtAnnio.setText(String.valueOf(hoy.getYear()));
         ButtonGroup groupSeguro = new ButtonGroup();
         groupSeguro.add(bttnSi);
         groupSeguro.add(bttnNO);
-        ButtonGroup groupTipoCliente= new ButtonGroup();
+        ButtonGroup groupTipoCliente = new ButtonGroup();
         groupTipoCliente.add(bttnPersonal);
         groupTipoCliente.add(bttnEmpresarial);
         bttnPersonal.setSelected(true);
         bttnSi.setSelected(true);
         txtKM.setEditable(false);
         txtKM.setText(String.valueOf(auto.getKilometraje()));
-     
-        
+        this.setTitle("Proyecto Auto Car, Ricardo Hernandez Salas, Alejandro Jimenez Ugalde");
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -322,64 +323,64 @@ public class FrmInfoCliente extends javax.swing.JFrame {
 
     private void btnAlquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlquilarActionPerformed
         // TODO add your handling code here:
-    String nombre = txtNombre.getText().trim();
-    String cedula = txtCedula.getText().trim();
+        String nombre = txtNombre.getText().trim();
+        String cedula = txtCedula.getText().trim();
 
-    if (nombre.isEmpty() || cedula.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Los campos de la cedula y nombre tiene que tener datos", "Campos obligatorios", JOptionPane.WARNING_MESSAGE);
-        return; 
-    }
+        if (nombre.isEmpty() || cedula.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Los campos de la cedula y nombre tiene que tener datos", "Campos obligatorios", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         try {
             LocalDateTime fechaAlquiler = LocalDateTime.now();
             int dia = Integer.parseInt(txtDia.getText());
             int mes = Integer.parseInt(txtMes.getText());
             int anio = Integer.parseInt(txtAnnio.getText());
-            
+
             LocalDate fechaDevolucion;
             try {
-            fechaDevolucion = LocalDate.of(anio, mes, dia); 
-        } catch (DateTimeException ex) {
-            JOptionPane.showMessageDialog(this, "Fecha ingresada no válida. Por favor verifique el dia, mes y año.", "Fecha invalida", JOptionPane.ERROR_MESSAGE);
-            return; 
-        }
-            
+                fechaDevolucion = LocalDate.of(anio, mes, dia);
+            } catch (DateTimeException ex) {
+                JOptionPane.showMessageDialog(this, "Fecha ingresada no válida. Por favor verifique el dia, mes y año.", "Fecha invalida", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             LocalDate hoy = LocalDate.now();
             if (!fechaDevolucion.isAfter(hoy)) {
-            JOptionPane.showMessageDialog(this, "La fecha de entrega debe ser posterior al dia de hoy", "Fecha invalida", JOptionPane.ERROR_MESSAGE);
-            return; 
-        }
-            
+                JOptionPane.showMessageDialog(this, "La fecha de entrega debe ser posterior al dia de hoy", "Fecha invalida", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             LocalDateTime fechaDevolucionConHora = LocalDateTime.of(anio, mes, dia, 23, 59);
-           
-            TipoCliente tipoCliente= bttnEmpresarial.isSelected() ? TipoCliente.CORPORATIVO: TipoCliente.REGULAR;
+
+            TipoCliente tipoCliente = bttnEmpresarial.isSelected() ? TipoCliente.CORPORATIVO : TipoCliente.REGULAR;
             Cliente cliente = new Cliente(cedula, nombre, tipoCliente);
             autoSeleccionado.setCliente(cliente);
-            
+
             double kilometrajeInicial = autoSeleccionado.getKilometraje();
             boolean deseaSeguroTerceros = bttnSi.isSelected();
             Alquiler alquiler = new Alquiler(fechaAlquiler, fechaDevolucionConHora, kilometrajeInicial, deseaSeguroTerceros, autoSeleccionado);
             alquiler.calcularSeguroTerceros();
             agencia.agregarAlquiler(alquiler);
-            
+
             JOptionPane.showMessageDialog(this, alquiler.toString());
             FrmMenu frmMenu = new FrmMenu(agencia);
-               frmMenu.setVisible(true);
-               frmMenu.setLocationRelativeTo(null);
-               dispose();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al crear el alquiler. Verificá los datos." + e.getMessage());
-        e.printStackTrace();
-    }
+            frmMenu.setVisible(true);
+            frmMenu.setLocationRelativeTo(null);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al crear el alquiler. Verificá los datos." + e.getMessage());
+            e.printStackTrace();
+        }
 
     }//GEN-LAST:event_btnAlquilarActionPerformed
 
     private void BttnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BttnRegresarActionPerformed
         // TODO add your handling code here:
-        
+
         FrmAlquiler frmAlquiler = new FrmAlquiler(agencia);
-               frmAlquiler.setVisible(true);
-               frmAlquiler.setLocationRelativeTo(null);
-               this.dispose();
+        frmAlquiler.setVisible(true);
+        frmAlquiler.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_BttnRegresarActionPerformed
 
     private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
@@ -388,64 +389,64 @@ public class FrmInfoCliente extends javax.swing.JFrame {
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
         // TODO add your handling code here:
-        
-        char caracter= evt.getKeyChar();
+
+        char caracter = evt.getKeyChar();
         if (!Character.isAlphabetic(caracter) && !Character.isSpaceChar(caracter)) {
-        evt.consume();
+            evt.consume();
         }
-        
+
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
         // TODO add your handling code here:
-        
-        char caracter= evt.getKeyChar();
+
+        char caracter = evt.getKeyChar();
         if (!Character.isDigit(caracter) || txtCedula.getText().length() >= 9) {
-        evt.consume();
+            evt.consume();
         }
-        if(((caracter < '0' || caracter > '9'))
-            &&(caracter != KeyEvent.VK_BACK_SPACE)
-            &&(caracter !='.' || txtCedula.getText().contains("."))){
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtCedula.getText().contains("."))) {
             evt.consume();
         }
     }//GEN-LAST:event_txtCedulaKeyTyped
 
     private void txtDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaKeyTyped
         // TODO add your handling code here:
-        
-        char caracter= evt.getKeyChar();
+
+        char caracter = evt.getKeyChar();
         if (!Character.isDigit(caracter) || txtDia.getText().length() >= 2) {
-        evt.consume();
+            evt.consume();
         }
-        if(((caracter < '0' || caracter > '9'))
-            &&(caracter != KeyEvent.VK_BACK_SPACE)
-            &&(caracter !='.' || txtDia.getText().contains("."))){
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtDia.getText().contains("."))) {
             evt.consume();
         }
     }//GEN-LAST:event_txtDiaKeyTyped
 
     private void txtMesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMesKeyTyped
         // TODO add your handling code here:
-        char caracter= evt.getKeyChar();
+        char caracter = evt.getKeyChar();
         if (!Character.isDigit(caracter) || txtMes.getText().length() >= 2) {
-        evt.consume();
+            evt.consume();
         }
-        if(((caracter < '0' || caracter > '9'))
-            &&(caracter != KeyEvent.VK_BACK_SPACE)
-            &&(caracter !='.' || txtMes.getText().contains("."))){
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtMes.getText().contains("."))) {
             evt.consume();
         }
     }//GEN-LAST:event_txtMesKeyTyped
 
     private void txtAnnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnnioKeyTyped
         // TODO add your handling code here:
-        char caracter= evt.getKeyChar();
+        char caracter = evt.getKeyChar();
         if (!Character.isDigit(caracter) || txtAnnio.getText().length() >= 4) {
-        evt.consume();
+            evt.consume();
         }
-        if(((caracter < '0' || caracter > '9'))
-            &&(caracter != KeyEvent.VK_BACK_SPACE)
-            &&(caracter !='.' || txtAnnio.getText().contains("."))){
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtAnnio.getText().contains("."))) {
             evt.consume();
         }
     }//GEN-LAST:event_txtAnnioKeyTyped
@@ -492,7 +493,7 @@ public class FrmInfoCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }

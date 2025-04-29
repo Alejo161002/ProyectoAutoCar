@@ -6,21 +6,19 @@ package proyecto.capaLogica;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 /**
  *
-* @autores 
- * Ricardo Hernández Salas, cedula 119430725
- * Jose Alejando Jiménez Ugalde, cedula 119400931
+ * @autores Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
  */
 public class FormatoFecha {
+
     private static DateTimeFormatter formato = DateTimeFormatter.ofLocalizedPattern("dd/MM/yyyy HH:mm");
-    
-    
-    public static String formatear (LocalDateTime fechaP){
+
+    public static String formatear(LocalDateTime fechaP) {
         String fecha = formato.format(fechaP);
         return fecha;
     }
-    
-    
-    
+
 } //fin de clase

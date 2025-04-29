@@ -83,7 +83,7 @@ public class Auto {
         sb.append("\n");
         sb.append("\n");
         sb.append("-Información del cliente-");
-            sb.append("\n");
+        sb.append("\n");
 
         if (this.cliente != null) {
             sb.append(cliente.toString());

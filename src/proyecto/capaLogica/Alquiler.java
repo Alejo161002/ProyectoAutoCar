@@ -79,13 +79,10 @@ public class Alquiler {
     }
 
     public double calcularSeguroTerceros() {
-    int dias = (int) Duration.between(fechaAlquiler, fechaDevolucion).toDays();
-    this.montoSeguroTerceros = deseaSeguroTerceros ? dias * 25 : 0;
-    return this.montoSeguroTerceros;
+        int dias = (int) Duration.between(fechaAlquiler, fechaDevolucion).toDays();
+        this.montoSeguroTerceros = deseaSeguroTerceros ? dias * 25 : 0;
+        return this.montoSeguroTerceros;
     }
-
-
-    
 
     public void setFechaDevolucionReal(LocalDateTime fechaDevolucion) {
         this.fechaDevolucionReal = fechaDevolucion;
@@ -191,12 +188,10 @@ public class Alquiler {
         mensaje.append("\n");
         mensaje.append("$").append(this.montoSeguroTerceros);
         mensaje.append("\n");
-        
-        
-        
-        
+
         return mensaje.toString();
     }
+
     public String reporte() {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         StringBuilder mensaje = new StringBuilder();
@@ -227,23 +222,23 @@ public class Alquiler {
         mensaje.append(this.kilometrajeInicial).append("km");
         mensaje.append("\n");
         mensaje.append("Kilometraje final: ");
-            mensaje.append("\n");
+        mensaje.append("\n");
         if (this.kilometrajeFinal != 0.0) {
             mensaje.append(this.kilometrajeFinal).append("km");
         } else {
-              mensaje.append("Alquiler pendiente de devolución."); 
+            mensaje.append("Alquiler pendiente de devolución.");
         }
         mensaje.append("\n");
         mensaje.append("\n");
         mensaje.append("-Montos-");
         mensaje.append("\n");
         mensaje.append("\n");
-            mensaje.append("Monto por días: ");
-            mensaje.append("\n");
+        mensaje.append("Monto por días: ");
+        mensaje.append("\n");
         if (montoPorDias != 0.0) {
             mensaje.append("₡").append(this.montoPorDias);
         } else {
-                mensaje.append("Alquiler pendiente de devolución."); 
+            mensaje.append("Alquiler pendiente de devolución.");
 
         }
         mensaje.append("\n");
@@ -252,25 +247,22 @@ public class Alquiler {
         mensaje.append("$").append(this.montoSeguroObligatorio);
         mensaje.append("\n");
         mensaje.append("Monto por Seguro a Terceros: ");
-            mensaje.append("\n");
+        mensaje.append("\n");
         if (montoSeguroTerceros != 0.0) {
             mensaje.append("$").append(this.montoSeguroTerceros);
         } else {
-            mensaje.append("-Seguro no adquirido-"); 
+            mensaje.append("-Seguro no adquirido-");
         }
         mensaje.append("\n");
         mensaje.append("Monto por kilometraje: ");
-            mensaje.append("\n");
+        mensaje.append("\n");
         if (this.montoPorKilometraje != 0.0) {
             mensaje.append("₡").append(this.montoPorKilometraje);
         } else {
-            mensaje.append("Alquiler pendiente de devolución."); 
+            mensaje.append("Alquiler pendiente de devolución.");
         }
         mensaje.append("\n");
-        
-        
-        
-        
+
         return mensaje.toString();
     }
 
@@ -278,5 +270,4 @@ public class Alquiler {
         this.estadoAlquiler = estadoAlquiler;
     }
 
-    
 }//fin de clase 

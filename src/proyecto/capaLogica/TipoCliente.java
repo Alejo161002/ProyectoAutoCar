@@ -6,14 +6,11 @@ package proyecto.capaLogica;
 
 /**
  *
- * @autores 
- * Ricardo Hernández Salas, cedula 119430725
- * Jose Alejando Jiménez Ugalde, cedula 119400931 
+ * @autores Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
  */
 public enum TipoCliente {
-    REGULAR, 
-    CORPORATIVO; 
-    
-}
+    REGULAR,
+    CORPORATIVO;
 
-  
+}

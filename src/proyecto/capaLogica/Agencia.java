@@ -11,7 +11,6 @@ import java.util.List;
  * @autores Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
  * Ugalde, cedula 119400931
  */
-
 public class Agencia {
 
     private Alquiler[][] alquileres;
@@ -38,24 +37,21 @@ public class Agencia {
     }
 
     public Auto buscarAuto(TipoAuto tipo, String marca, int annoDesde, int annoHasta) {
-    for (int i = 0; i < autos.length; i++) {
-        Auto actual = autos[i];
+        for (int i = 0; i < autos.length; i++) {
+            Auto actual = autos[i];
 
-        if (
-            actual.getTipoAuto() == tipo &&
-            actual.getMarca().toLowerCase().contains(marca.toLowerCase()) &&
-            actual.getModelo() >= annoDesde &&
-            actual.getModelo() <= annoHasta &&
-            actual.getEstado()
-        ) {
-            actual.setEstado(false); 
-            return actual;
+            if (actual.getTipoAuto() == tipo
+                    && actual.getMarca().toLowerCase().contains(marca.toLowerCase())
+                    && actual.getModelo() >= annoDesde
+                    && actual.getModelo() <= annoHasta
+                    && actual.getEstado()) {
+                actual.setEstado(false);
+                return actual;
+            }
         }
+
+        return null;
     }
-
-    return null; 
-}
-
 
     // Este metodo sera usado para buscar el auto por placa cuando sea devuelto. 
     public Auto buscarAutoPorPlaca(int placa) {
@@ -161,24 +157,23 @@ public class Agencia {
             }
         }
         alquileres[fila][0] = alquiler;
-        
-        
-        
+
     }// fin de metodo
 
     public Alquiler buscarAlquiler(Auto auto) {
         int fila = buscarFila(auto);
         for (int j = 0; j < alquileres[0].length; j++) {
-            if (alquileres[fila][j]!=null && alquileres[fila][j].getEstadoAlquiler()) {
+            if (alquileres[fila][j] != null && alquileres[fila][j].getEstadoAlquiler()) {
                 return alquileres[fila][j];
             }
         }
         return null;
     }
-    public Alquiler devolverAuto(Auto auto){
+
+    public Alquiler devolverAuto(Auto auto) {
         int fila = buscarFila(auto);
-        for (int j = alquileres[0].length-1; j >= 0; j--) {
-            if (alquileres[fila][j]!=null && alquileres[fila][j].getEstadoAlquiler()) {
+        for (int j = alquileres[0].length - 1; j >= 0; j--) {
+            if (alquileres[fila][j] != null && alquileres[fila][j].getEstadoAlquiler()) {
                 return alquileres[fila][j];
             }
         }
@@ -193,15 +188,14 @@ public class Agencia {
         }
         return mensaje.toString();
     }
-    
-    
-    public String reporteAlquileres(int placa){
+
+    public String reporteAlquileres(int placa) {
         Auto actual = buscarAutoPorPlaca(placa);
-        if(actual == null){
+        if (actual == null) {
             return null;
-                    }
+        }
         int fila = buscarFila(actual);
-        StringBuilder mensaje = new  StringBuilder();
+        StringBuilder mensaje = new StringBuilder();
         mensaje.append(actual.reporte());
         mensaje.append("\n\n");
         for (int j = 0; j < alquileres[0].length; j++) {
@@ -212,12 +206,10 @@ public class Agencia {
                 mensaje.append("Fin del reporte.");
                 break;
             }
-        
+
         }
         return mensaje.toString();
     }
-    
-    
 
 } // fin de clase 
 

@@ -14,8 +14,8 @@ import proyecto.capaLogica.Alquiler;
 
 /**
  *
- * @author Ricardo Hernández Salas, cedula 119430725
- * Jose Alejando Jiménez Ugalde, cedula 119400931
+ * @author Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
  */
 public class FrmDevoluccion extends javax.swing.JFrame {
 
@@ -23,9 +23,12 @@ public class FrmDevoluccion extends javax.swing.JFrame {
      * Creates new form FrmDevoluccion
      */
     private Agencia agencia;
+
     public FrmDevoluccion(Agencia agencia) {
         initComponents();
         this.agencia = agencia;
+        this.setTitle("Proyecto Auto Car, Ricardo Hernandez Salas, Alejandro Jimenez Ugalde");
+
     }
 
     /**
@@ -219,8 +222,8 @@ public class FrmDevoluccion extends javax.swing.JFrame {
 
     private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_txtPlacaActionPerformed
 
     private void txtPlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlacaKeyTyped
@@ -239,72 +242,71 @@ public class FrmDevoluccion extends javax.swing.JFrame {
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-         FrmMenu frmMenu = new FrmMenu(agencia);
-               frmMenu.setVisible(true);
-               frmMenu.setLocationRelativeTo(null);
+        FrmMenu frmMenu = new FrmMenu(agencia);
+        frmMenu.setVisible(true);
+        frmMenu.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:   
-    try {
-        
-        if (txtDia.getText().isEmpty() || txtMes.getText().isEmpty() || txtAnnio.getText().isEmpty() ||
-            txtPlaca.getText().isEmpty() || txtKilometrajeFinal.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe completar todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        int dia = Integer.parseInt(txtDia.getText());
-        int mes = Integer.parseInt(txtMes.getText());
-        int annio = Integer.parseInt(txtAnnio.getText());
-        int placa = Integer.parseInt(txtPlaca.getText());
-        double kilometrajeFinal = Double.parseDouble(txtKilometrajeFinal.getText());
-
-        LocalDate fechaIngresada;
         try {
-            fechaIngresada = LocalDate.of(annio, mes, dia);
-        } catch (DateTimeException e) {
-            JOptionPane.showMessageDialog(this, "Fecha invalida: " + e.getMessage(), "Error de fecha", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
 
-        LocalDate hoy = LocalDate.now();
-        if (fechaIngresada.isBefore(hoy)) {
-            JOptionPane.showMessageDialog(this, "No se puede seleccionar una fecha anterior a hoy", "Fecha invalida", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+            if (txtDia.getText().isEmpty() || txtMes.getText().isEmpty() || txtAnnio.getText().isEmpty()
+                    || txtPlaca.getText().isEmpty() || txtKilometrajeFinal.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe completar todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-        var auto = agencia.buscarAutoPorPlaca(placa);
-        if (auto == null) {
-            JOptionPane.showMessageDialog(this, "No se encontro un vehículo con esa placa", "Placa no encontrada", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        if (kilometrajeFinal < auto.getKilometraje()) {
+            int dia = Integer.parseInt(txtDia.getText());
+            int mes = Integer.parseInt(txtMes.getText());
+            int annio = Integer.parseInt(txtAnnio.getText());
+            int placa = Integer.parseInt(txtPlaca.getText());
+            double kilometrajeFinal = Double.parseDouble(txtKilometrajeFinal.getText());
+
+            LocalDate fechaIngresada;
+            try {
+                fechaIngresada = LocalDate.of(annio, mes, dia);
+            } catch (DateTimeException e) {
+                JOptionPane.showMessageDialog(this, "Fecha invalida: " + e.getMessage(), "Error de fecha", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            LocalDate hoy = LocalDate.now();
+            if (fechaIngresada.isBefore(hoy)) {
+                JOptionPane.showMessageDialog(this, "No se puede seleccionar una fecha anterior a hoy", "Fecha invalida", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            var auto = agencia.buscarAutoPorPlaca(placa);
+            if (auto == null) {
+                JOptionPane.showMessageDialog(this, "No se encontro un vehículo con esa placa", "Placa no encontrada", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (kilometrajeFinal < auto.getKilometraje()) {
                 JOptionPane.showMessageDialog(this, "El kilometraje final no puede ser menor al kilometraje actual del vehículo ( " + auto.getKilometraje() + " )", "Kilometraje inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
+                return;
+            }
 
-        Alquiler alquiler = agencia.devolverAuto(auto);
-        if (alquiler != null) {
-            LocalDateTime fechaDevolucion = LocalDateTime.of(annio, mes, dia, 10, 0);
-            alquiler.setFechaDevolucionReal(fechaDevolucion);
-            alquiler.calcularMontoPorKilometros(auto, kilometrajeFinal);
-            alquiler.calcularMontoPorDias(fechaDevolucion, auto);
-            JOptionPane.showMessageDialog(this, alquiler.reporte(), "Devolución realizada con éxito", JOptionPane.INFORMATION_MESSAGE);
-            auto.setKilometraje(kilometrajeFinal);
-            auto.setEstado(true); 
-            auto.setCliente(null); 
-            alquiler.setEstadoAlquiler(false); 
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró un alquiler activo para este vehículo.", "Sin Alquiler", JOptionPane.WARNING_MESSAGE);
+            Alquiler alquiler = agencia.devolverAuto(auto);
+            if (alquiler != null) {
+                LocalDateTime fechaDevolucion = LocalDateTime.of(annio, mes, dia, 10, 0);
+                alquiler.setFechaDevolucionReal(fechaDevolucion);
+                alquiler.calcularMontoPorKilometros(auto, kilometrajeFinal);
+                alquiler.calcularMontoPorDias(fechaDevolucion, auto);
+                JOptionPane.showMessageDialog(this, alquiler.reporte(), "Devolución realizada con éxito", JOptionPane.INFORMATION_MESSAGE);
+                auto.setKilometraje(kilometrajeFinal);
+                auto.setEstado(true);
+                auto.setCliente(null);
+                alquiler.setEstadoAlquiler(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró un alquiler activo para este vehículo.", "Sin Alquiler", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese valores numéricos válidos.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Por favor ingrese valores numéricos válidos.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    } 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
@@ -326,44 +328,44 @@ public class FrmDevoluccion extends javax.swing.JFrame {
 
     private void txtDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaKeyTyped
         // TODO add your handling code here:
-        char caracter= evt.getKeyChar();
+        char caracter = evt.getKeyChar();
         if (!Character.isDigit(caracter) || txtDia.getText().length() >= 2) {
-        evt.consume();
-        }
-        if(((caracter < '0' || caracter > '9'))
-            &&(caracter != KeyEvent.VK_BACK_SPACE)
-            &&(caracter !='.' || txtDia.getText().contains("."))){
             evt.consume();
         }
-        
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtDia.getText().contains("."))) {
+            evt.consume();
+        }
+
     }//GEN-LAST:event_txtDiaKeyTyped
 
     private void txtMesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMesKeyTyped
         // TODO add your handling code here:
-        char caracter= evt.getKeyChar();
+        char caracter = evt.getKeyChar();
         if (!Character.isDigit(caracter) || txtMes.getText().length() >= 2) {
-        evt.consume();
-        }
-        if(((caracter < '0' || caracter > '9'))
-            &&(caracter != KeyEvent.VK_BACK_SPACE)
-            &&(caracter !='.' || txtMes.getText().contains("."))){
             evt.consume();
         }
-        
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtMes.getText().contains("."))) {
+            evt.consume();
+        }
+
     }//GEN-LAST:event_txtMesKeyTyped
 
     private void txtAnnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnnioKeyTyped
         // TODO add your handling code here:
-        char caracter= evt.getKeyChar();
+        char caracter = evt.getKeyChar();
         if (!Character.isDigit(caracter) || txtAnnio.getText().length() >= 4) {
-        evt.consume();
-        }
-        if(((caracter < '0' || caracter > '9'))
-            &&(caracter != KeyEvent.VK_BACK_SPACE)
-            &&(caracter !='.' || txtAnnio.getText().contains("."))){
             evt.consume();
         }
-        
+        if (((caracter < '0' || caracter > '9'))
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || txtAnnio.getText().contains("."))) {
+            evt.consume();
+        }
+
     }//GEN-LAST:event_txtAnnioKeyTyped
 
     private void txtKilometrajeFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKilometrajeFinalActionPerformed
@@ -400,7 +402,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               
+
             }
         });
     }

@@ -6,9 +6,8 @@ package proyecto.capaLogica;
 
 /**
  *
- * @autores 
- * Ricardo Hernández Salas, cedula 119430725
- * Jose Alejando Jiménez Ugalde, cedula 119400931
+ * @autores Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
  */
 public class Cliente {
 
@@ -25,11 +24,11 @@ public class Cliente {
     public TipoCliente getTipo() {
         return tipo;
     }
-    
+
     @Override
-    public String toString(){
-        return String.format("Nombre: %s    |  Cedula: %s   |  Tipo: %s" , nombre,cedula,tipo);
-               
+    public String toString() {
+        return String.format("Nombre: %s    |  Cedula: %s   |  Tipo: %s", nombre, cedula, tipo);
+
     }
-    
+
 }

@@ -9,17 +9,17 @@ import proyecto.capaLogica.Agencia;
 
 /**
  *
- * @author Ricardo Hernández Salas, cedula 119430725
- * Jose Alejando Jiménez Ugalde, cedula 119400931 
+ * @author Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
  */
 public class FrmMenu extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form Main
      */
-    
     private ButtonGroup seleccion;
     private Agencia agencia;
+
     public FrmMenu(Agencia agencia) {
         initComponents();
         seleccion = new ButtonGroup();
@@ -28,6 +28,8 @@ public class FrmMenu extends javax.swing.JFrame {
         seleccion.add(btnDevolucion);
         seleccion.add(btnReporte);
         this.agencia = agencia;
+        this.setTitle("Proyecto Auto Car, Ricardo Hernandez Salas, Alejandro Jimenez Ugalde");
+
     }
 
     /**
@@ -160,31 +162,31 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(btnAlquilar.isSelected()){
+        if (btnAlquilar.isSelected()) {
             FrmAlquiler frmAlquiler = new FrmAlquiler(agencia);
-               frmAlquiler.setVisible(true);
-               frmAlquiler.setLocationRelativeTo(null);
-               dispose();
-               
-        } 
-        
-        if(btnDevolucion.isSelected()){
-            FrmDevoluccion frmDevoluccion = new FrmDevoluccion(agencia);
-               frmDevoluccion.setVisible(true);
-               frmDevoluccion.setLocationRelativeTo(null);
-               dispose();
+            frmAlquiler.setVisible(true);
+            frmAlquiler.setLocationRelativeTo(null);
+            dispose();
+
         }
-        if(btnReporte.isSelected()){
+
+        if (btnDevolucion.isSelected()) {
+            FrmDevoluccion frmDevoluccion = new FrmDevoluccion(agencia);
+            frmDevoluccion.setVisible(true);
+            frmDevoluccion.setLocationRelativeTo(null);
+            dispose();
+        }
+        if (btnReporte.isSelected()) {
             FrmReportes frmreporte = new FrmReportes(agencia);
             frmreporte.setVisible(true);
             frmreporte.setLocationRelativeTo(null);
             dispose();
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed
-        
+
     }//GEN-LAST:event_btnDevolucionActionPerformed
 
     /**
@@ -220,7 +222,7 @@ public class FrmMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new FrmMenu().setVisible(true);
+                // new FrmMenu().setVisible(true);
             }
         });
     }

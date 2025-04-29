@@ -6,17 +6,20 @@ package proyecto.capaGrafica;
 
 import javax.swing.ButtonGroup;
 import proyecto.capaLogica.Agencia;
+
 /**
  *
- * @author Ricardo Hernández Salas, cedula 119430725
- * Jose Alejando Jiménez Ugalde, cedula 119400931
+ * @author Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
  */
 public class FrmReportes extends javax.swing.JFrame {
 
     /**
      * Creates new form Reportes
-     */private ButtonGroup seleccion;
-       private Agencia agencia;
+     */
+    private ButtonGroup seleccion;
+    private Agencia agencia;
+
     public FrmReportes(Agencia agencia) {
         initComponents();
         seleccion = new ButtonGroup();
@@ -24,6 +27,8 @@ public class FrmReportes extends javax.swing.JFrame {
         seleccion.add(btnTodos);
         seleccion.add(btnPlaca);
         this.agencia = agencia;
+        this.setTitle("Proyecto Auto Car, Ricardo Hernandez Salas, Alejandro Jimenez Ugalde");
+
     }
 
     /**
@@ -110,14 +115,14 @@ public class FrmReportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        if(btnTodos.isSelected()){
+
+        if (btnTodos.isSelected()) {
             FrmReportesAgencia frmAgencia = new FrmReportesAgencia(agencia);
             frmAgencia.setVisible(true);
             frmAgencia.setLocationRelativeTo(null);
         }
-        
-        if(btnPlaca.isSelected()){
+
+        if (btnPlaca.isSelected()) {
             FrmReportePlaca frmAlquileres = new FrmReportePlaca(agencia);
             frmAlquileres.setVisible(true);
             frmAlquileres.setLocationRelativeTo(null);
@@ -127,9 +132,9 @@ public class FrmReportes extends javax.swing.JFrame {
     private void bttnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnRegresarActionPerformed
         // TODO add your handling code here:
         FrmMenu frmMenu = new FrmMenu(agencia);
-               frmMenu.setVisible(true);
-               frmMenu.setLocationRelativeTo(null);
-               dispose();
+        frmMenu.setVisible(true);
+        frmMenu.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_bttnRegresarActionPerformed
 
     /**
@@ -169,7 +174,7 @@ public class FrmReportes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }

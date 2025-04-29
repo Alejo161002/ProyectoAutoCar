@@ -28,6 +28,7 @@ public class FrmAlquiler extends javax.swing.JFrame {
         initComponents();
         this.agencia = agencia;
         setLocationRelativeTo(null);
+        this.setTitle("Proyecto Auto Car, Ricardo Hernandez Salas, Alejandro Jimenez Ugalde");
     }
 
     /**

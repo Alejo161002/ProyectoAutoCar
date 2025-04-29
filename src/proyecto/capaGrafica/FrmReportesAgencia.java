@@ -9,8 +9,8 @@ import proyecto.capaLogica.Auto;
 
 /**
  *
- * @author Ricardo Hernández Salas, cedula 119430725
- * Jose Alejando Jiménez Ugalde, cedula 119400931
+ * @author Ricardo Hernández Salas, cedula 119430725 Jose Alejando Jiménez
+ * Ugalde, cedula 119400931
  */
 public class FrmReportesAgencia extends javax.swing.JFrame {
 
@@ -22,6 +22,8 @@ public class FrmReportesAgencia extends javax.swing.JFrame {
     public FrmReportesAgencia(Agencia agencia) {
         initComponents();
         this.agencia = agencia;
+        this.setTitle("Proyecto Auto Car, Ricardo Hernandez Salas, Alejandro Jimenez Ugalde");
+
     }
 
     /**
