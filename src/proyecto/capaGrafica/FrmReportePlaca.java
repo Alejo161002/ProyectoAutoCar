@@ -130,15 +130,15 @@ public class FrmReportePlaca extends javax.swing.JFrame {
         return;
     }  
          try {
-        int placa = Integer.parseInt(txtConsultar.getText().trim());
+        int placa = Integer.parseInt(placaText);
         String resultado = agencia.reporteAlquileres(placa);
-            if (resultado == null || resultado.isEmpty()) {
+            if (resultado == null || resultado.isEmpty()) { 
                 JOptionPane.showMessageDialog(this, "No se encontró ningún alquiler para el vehículo seleccionado.");
                 } else {
              txtResultado.setText(resultado);
             }
          } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese una placa válida (solo números).", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese una placa válida ", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

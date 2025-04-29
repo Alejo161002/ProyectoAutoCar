@@ -197,6 +197,9 @@ public class Agencia {
     
     public String reporteAlquileres(int placa){
         Auto actual = buscarAutoPorPlaca(placa);
+        if(actual == null){
+            return null;
+                    }
         int fila = buscarFila(actual);
         StringBuilder mensaje = new  StringBuilder();
         mensaje.append(actual.reporte());
