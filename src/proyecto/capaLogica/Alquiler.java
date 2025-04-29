@@ -216,7 +216,11 @@ public class Alquiler {
         mensaje.append("\n");
         mensaje.append("Fecha de devolucion real: ");
         mensaje.append("\n");
-        mensaje.append(this.fechaDevolucionReal.format(formato));
+        if (this.fechaDevolucionReal != null) {
+            mensaje.append(this.fechaDevolucionReal.format(formato));
+        } else {
+            mensaje.append("Alquiler pendiente de devolución.");
+        }
         mensaje.append("\n");
         mensaje.append("Kilometraje inicial: ");
         mensaje.append("\n");

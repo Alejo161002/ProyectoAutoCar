@@ -18,9 +18,10 @@ public class FrmReportePlaca extends javax.swing.JFrame {
      * Creates new form FrmReporteAlquileres
      */
     private Agencia agencia;
+
     public FrmReportePlaca(Agencia agencia) {
         initComponents();
-        this.agencia = agencia ;
+        this.agencia = agencia;
     }
 
     /**
@@ -126,25 +127,25 @@ public class FrmReportePlaca extends javax.swing.JFrame {
         // TODO add your handling code here:
         String placaText = txtConsultar.getText().trim();
         if (placaText.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese una placa.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }  
-         try {
-        int placa = Integer.parseInt(placaText);
-        String resultado = agencia.reporteAlquileres(placa);
-            if (resultado == null || resultado.isEmpty()) { 
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese una placa.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            int placa = Integer.parseInt(placaText);
+            String resultado = agencia.reporteAlquileres(placa);
+            if (resultado == null || resultado.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No se encontró ningún alquiler para el vehículo seleccionado.");
-                } else {
-             txtResultado.setText(resultado);
+            } else {
+                txtResultado.setText(resultado);
             }
-         } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese una placa válida ", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese una placa válida ", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-        FrmReportes frmReportes= new FrmReportes(agencia);
+        FrmReportes frmReportes = new FrmReportes(agencia);
         frmReportes.setVisible(true);
         frmReportes.setLocationRelativeTo(null);
         dispose();
@@ -152,7 +153,7 @@ public class FrmReportePlaca extends javax.swing.JFrame {
 
     private void txtConsultarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConsultarKeyTyped
         // TODO add your handling code here:
-         char caracter = evt.getKeyChar();
+        char caracter = evt.getKeyChar();
         if (!Character.isDigit(caracter) || txtConsultar.getText().length() >= 6) {
             evt.consume();
         }
@@ -199,7 +200,7 @@ public class FrmReportePlaca extends javax.swing.JFrame {
             }
         });
     }
-*/
+         */
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;

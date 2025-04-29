@@ -149,7 +149,7 @@ public class FrmInfoCliente extends javax.swing.JFrame {
 
         bttnEmpresarial.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         bttnEmpresarial.setForeground(new java.awt.Color(51, 51, 51));
-        bttnEmpresarial.setText("Empresarial ");
+        bttnEmpresarial.setText("Corporativo");
 
         btnAlquilar.setBackground(new java.awt.Color(0, 123, 255));
         btnAlquilar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
