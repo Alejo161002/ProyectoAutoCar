@@ -241,7 +241,7 @@ public class Alquiler {
             mensaje.append("Monto por días: ");
             mensaje.append("\n");
         if (montoPorDias != 0.0) {
-            mensaje.append("$").append(this.montoPorDias);
+            mensaje.append("₡").append(this.montoPorDias);
         } else {
                 mensaje.append("Alquiler pendiente de devolución."); 
 
@@ -262,7 +262,7 @@ public class Alquiler {
         mensaje.append("Monto por kilometraje: ");
             mensaje.append("\n");
         if (this.montoPorKilometraje != 0.0) {
-            mensaje.append("$").append(this.montoPorKilometraje);
+            mensaje.append("₡").append(this.montoPorKilometraje);
         } else {
             mensaje.append("Alquiler pendiente de devolución."); 
         }
