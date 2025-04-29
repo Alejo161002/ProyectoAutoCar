@@ -323,7 +323,7 @@ public class FrmDevoluccion extends javax.swing.JFrame {
     private void txtAnnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnnioKeyTyped
         // TODO add your handling code here:
         char caracter= evt.getKeyChar();
-        if (!Character.isDigit(caracter) || txtAnnio.getText().length() >= 2) {
+        if (!Character.isDigit(caracter) || txtAnnio.getText().length() >= 4) {
         evt.consume();
         }
         if(((caracter < '0' || caracter > '9'))
