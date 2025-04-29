@@ -14,7 +14,8 @@ import proyecto.capaLogica.Alquiler;
 
 /**
  *
- * @author Ale
+ * @author Ricardo Hernández Salas, cedula 119430725
+ * Jose Alejando Jiménez Ugalde, cedula 119400931
  */
 public class FrmDevoluccion extends javax.swing.JFrame {
 

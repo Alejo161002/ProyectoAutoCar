@@ -20,7 +20,8 @@ import proyecto.capaLogica.TipoCliente;
 
 /**
  *
- * @author Z20863
+ * @author Ricardo Hernández Salas, cedula 119430725
+ * Jose Alejando Jiménez Ugalde, cedula 119400931
  */
 public class FrmInfoCliente extends javax.swing.JFrame {
 
@@ -338,19 +339,18 @@ public class FrmInfoCliente extends javax.swing.JFrame {
             try {
             fechaDevolucion = LocalDate.of(anio, mes, dia); 
         } catch (DateTimeException ex) {
-            JOptionPane.showMessageDialog(this, "Fecha ingresada no válida. Por favor verifique el día, mes y año.", "Fecha invalida", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Fecha ingresada no válida. Por favor verifique el dia, mes y año.", "Fecha invalida", JOptionPane.ERROR_MESSAGE);
             return; 
         }
             
             LocalDate hoy = LocalDate.now();
             if (!fechaDevolucion.isAfter(hoy)) {
-            JOptionPane.showMessageDialog(this, "La fecha de entrega debe ser posterior al dia de hoy", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La fecha de entrega debe ser posterior al dia de hoy", "Fecha invalida", JOptionPane.ERROR_MESSAGE);
             return; 
         }
             
             LocalDateTime fechaDevolucionConHora = LocalDateTime.of(anio, mes, dia, 23, 59);
            
-            
             TipoCliente tipoCliente= bttnEmpresarial.isSelected() ? TipoCliente.CORPORATIVO: TipoCliente.REGULAR;
             Cliente cliente = new Cliente(cedula, nombre, tipoCliente);
             autoSeleccionado.setCliente(cliente);
