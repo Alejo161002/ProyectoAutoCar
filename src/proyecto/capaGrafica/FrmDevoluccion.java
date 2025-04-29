@@ -263,19 +263,19 @@ public class FrmDevoluccion extends javax.swing.JFrame {
         try {
             fechaIngresada = LocalDate.of(annio, mes, dia);
         } catch (DateTimeException e) {
-            JOptionPane.showMessageDialog(this, "Fecha inválida: " + e.getMessage(), "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Fecha invalida: " + e.getMessage(), "Error de fecha", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         LocalDate hoy = LocalDate.now();
         if (fechaIngresada.isBefore(hoy)) {
-            JOptionPane.showMessageDialog(this, "No se puede seleccionar una fecha anterior a hoy.", "Fecha Inválida", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se puede seleccionar una fecha anterior a hoy", "Fecha invalida", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         var auto = agencia.buscarAutoPorPlaca(placa);
         if (auto == null) {
-            JOptionPane.showMessageDialog(this, "No se encontró un vehículo con esa placa.", "Placa No Encontrada", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontro un vehículo con esa placa", "Placa no encontrada", JOptionPane.ERROR_MESSAGE);
             return;
         }
 

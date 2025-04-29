@@ -6,6 +6,7 @@ package proyecto.capaGrafica;
 
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
+import java.time.DateTimeException;
 import proyecto.capaLogica.Auto;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -326,9 +327,15 @@ public class FrmInfoCliente extends javax.swing.JFrame {
             int mes = Integer.parseInt(txtMes.getText());
             int anio = Integer.parseInt(txtAnnio.getText());
             
-            LocalDate fechaDevolucion = LocalDate.of(anio, mes, dia);
-            LocalDate hoy = LocalDate.now();
+            LocalDate fechaDevolucion;
+            try {
+            fechaDevolucion = LocalDate.of(anio, mes, dia); 
+        } catch (DateTimeException ex) {
+            JOptionPane.showMessageDialog(this, "Fecha ingresada no válida. Por favor verifique el día, mes y año.", "Fecha invalida", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
             
+            LocalDate hoy = LocalDate.now();
             if (fechaDevolucion.isBefore(hoy)) {
             JOptionPane.showMessageDialog(this, "La fecha de entrega no puede ser anterior a hoy.", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
             return; 

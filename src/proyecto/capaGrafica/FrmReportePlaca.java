@@ -124,6 +124,11 @@ public class FrmReportePlaca extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String placaText = txtConsultar.getText().trim();
+        if (placaText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese una placa.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }  
          try {
         int placa = Integer.parseInt(txtConsultar.getText().trim());
         String resultado = agencia.reporteAlquileres(placa);
