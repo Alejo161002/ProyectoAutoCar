@@ -5,6 +5,8 @@
 package proyecto.capaGrafica;
 
 import java.awt.event.KeyEvent;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import proyecto.capaLogica.Agencia;
@@ -243,36 +245,59 @@ public class FrmDevoluccion extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:   
-    int dias = Integer.parseInt(txtDia.getText());
-    int annio = Integer.parseInt(txtAnnio.getText());
-    int mes = Integer.parseInt(txtMes.getText());
-    java.time.LocalDate fechaIngresada = java.time.LocalDate.of(annio, mes, dias);
-    java.time.LocalDate hoy = java.time.LocalDate.now();
-    LocalDateTime fechaDevolucion = LocalDateTime.of(annio, mes, dias, 10, 0);
-    if(fechaIngresada.isBefore(hoy)){
-    JOptionPane.showMessageDialog(this, "No se puede seleccionar un facha anterior de hoy ");
-    }
-    
-    int placa = Integer.parseInt(txtPlaca.getText()); 
-    double kilometrajeFinal = Double.parseDouble(txtKilometrajeFinal.getText());
-    var auto = agencia.buscarAutoPorPlaca(placa);
-    Alquiler alquiler = agencia.devolverAuto(auto);
-    
-    if (alquiler != null) {
-        alquiler.setFechaDevolucionReal(fechaDevolucion);
-        alquiler.calcularMontoPorKilometros(auto, kilometrajeFinal );
-        alquiler.calcularMontoPorDias(fechaDevolucion, auto);
-        JOptionPane.showMessageDialog(this, alquiler.reporte(), "Devolucion realizada con exito ",JOptionPane.INFORMATION_MESSAGE);
-        auto.setKilometraje(auto.getKilometraje() + (kilometrajeFinal- auto.getKilometraje()));
-        auto.setEstado(true);
-        auto.setCliente(null);
-        alquiler.setEstadoAlquiler(false);
+    try {
         
-    } else {
-        JOptionPane.showMessageDialog(this, "No se encontró un alquiler activo para el vehículo.");
-    }
-    
-    
+        if (txtDia.getText().isEmpty() || txtMes.getText().isEmpty() || txtAnnio.getText().isEmpty() ||
+            txtPlaca.getText().isEmpty() || txtKilometrajeFinal.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int dia = Integer.parseInt(txtDia.getText());
+        int mes = Integer.parseInt(txtMes.getText());
+        int annio = Integer.parseInt(txtAnnio.getText());
+        int placa = Integer.parseInt(txtPlaca.getText());
+        double kilometrajeFinal = Double.parseDouble(txtKilometrajeFinal.getText());
+
+        LocalDate fechaIngresada;
+        try {
+            fechaIngresada = LocalDate.of(annio, mes, dia);
+        } catch (DateTimeException e) {
+            JOptionPane.showMessageDialog(this, "Fecha inválida: " + e.getMessage(), "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        LocalDate hoy = LocalDate.now();
+        if (fechaIngresada.isBefore(hoy)) {
+            JOptionPane.showMessageDialog(this, "No se puede seleccionar una fecha anterior a hoy.", "Fecha Inválida", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        var auto = agencia.buscarAutoPorPlaca(placa);
+        if (auto == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró un vehículo con esa placa.", "Placa No Encontrada", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Alquiler alquiler = agencia.devolverAuto(auto);
+        if (alquiler != null) {
+            LocalDateTime fechaDevolucion = LocalDateTime.of(annio, mes, dia, 10, 0);
+            alquiler.setFechaDevolucionReal(fechaDevolucion);
+            alquiler.calcularMontoPorKilometros(auto, kilometrajeFinal);
+            alquiler.calcularMontoPorDias(fechaDevolucion, auto);
+            JOptionPane.showMessageDialog(this, alquiler.reporte(), "Devolución realizada con éxito", JOptionPane.INFORMATION_MESSAGE);
+            auto.setKilometraje(kilometrajeFinal);
+            auto.setEstado(true); 
+            auto.setCliente(null); 
+            alquiler.setEstadoAlquiler(false); 
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró un alquiler activo para este vehículo.", "Sin Alquiler", JOptionPane.WARNING_MESSAGE);
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Por favor ingrese valores numéricos válidos.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    } 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
