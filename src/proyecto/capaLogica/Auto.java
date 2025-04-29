@@ -81,8 +81,10 @@ public class Auto {
         sb.append("El numero de placa del vehiculo es: ");
         sb.append(placa);
         sb.append("\n");
-        sb.append("-Información del cliente-");
         sb.append("\n");
+        sb.append("-Información del cliente-");
+            sb.append("\n");
+
         if (this.cliente != null) {
             sb.append(cliente.toString());
 
@@ -163,7 +165,5 @@ public class Auto {
     public void setKilometraje(double kilometraje) {
         this.kilometraje = kilometraje;
     }
-    
-    
 
 }

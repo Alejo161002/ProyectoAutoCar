@@ -227,27 +227,45 @@ public class Alquiler {
         mensaje.append(this.kilometrajeInicial).append("km");
         mensaje.append("\n");
         mensaje.append("Kilometraje final: ");
+            mensaje.append("\n");
+        if (this.kilometrajeFinal != 0.0) {
+            mensaje.append(this.kilometrajeFinal).append("km");
+        } else {
+              mensaje.append("Alquiler pendiente de devolución."); 
+        }
         mensaje.append("\n");
-        mensaje.append(this.kilometrajeFinal).append("km");
         mensaje.append("\n");
         mensaje.append("-Montos-");
         mensaje.append("\n");
         mensaje.append("\n");
-        mensaje.append("Monto por días: ");
-        mensaje.append("\n");
-        mensaje.append("$").append(this.montoPorDias);
+            mensaje.append("Monto por días: ");
+            mensaje.append("\n");
+        if (montoPorDias != 0.0) {
+            mensaje.append("$").append(this.montoPorDias);
+        } else {
+                mensaje.append("Alquiler pendiente de devolución."); 
+
+        }
         mensaje.append("\n");
         mensaje.append("Monto por Seguro Obligatorio: ");
         mensaje.append("\n");
         mensaje.append("$").append(this.montoSeguroObligatorio);
         mensaje.append("\n");
         mensaje.append("Monto por Seguro a Terceros: ");
-        mensaje.append("\n");
-        mensaje.append("$").append(this.montoSeguroTerceros);
+            mensaje.append("\n");
+        if (montoSeguroTerceros != 0.0) {
+            mensaje.append("$").append(this.montoSeguroTerceros);
+        } else {
+            mensaje.append("-Seguro no adquirido-"); 
+        }
         mensaje.append("\n");
         mensaje.append("Monto por kilometraje: ");
-        mensaje.append("\n");
-        mensaje.append("$").append(this.montoPorKilometraje);
+            mensaje.append("\n");
+        if (this.montoPorKilometraje != 0.0) {
+            mensaje.append("$").append(this.montoPorKilometraje);
+        } else {
+            mensaje.append("Alquiler pendiente de devolución."); 
+        }
         mensaje.append("\n");
         
         

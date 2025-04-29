@@ -258,7 +258,7 @@ public class FrmAlquiler extends javax.swing.JFrame {
             Auto auto = agencia.buscarAuto(tipo, marca, annoDesde, annoHasta);
 
             if (auto != null) {
-                int option = JOptionPane.showConfirmDialog(this, auto.reporte (),
+                int option = JOptionPane.showConfirmDialog(this, auto.reporte(),
                         "Especificaciones del Auto", JOptionPane.OK_CANCEL_OPTION,
                         JOptionPane.INFORMATION_MESSAGE);
 
