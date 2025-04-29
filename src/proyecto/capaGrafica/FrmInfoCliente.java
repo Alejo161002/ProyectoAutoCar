@@ -341,7 +341,7 @@ public class FrmInfoCliente extends javax.swing.JFrame {
             return; 
         }
             
-            LocalDateTime fechaDevolucionConHora = LocalDateTime.of(anio, mes, dia, 10, 0);
+            LocalDateTime fechaDevolucionConHora = LocalDateTime.of(anio, mes, dia, 23, 59);
            
             String nombre = txtNombre.getText().trim();
             String cedula = txtCedula.getText().trim();
