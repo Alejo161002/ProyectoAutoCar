@@ -278,6 +278,12 @@ public class FrmDevoluccion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontro un vehículo con esa placa", "Placa no encontrada", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        if (kilometrajeFinal < auto.getKilometraje()) {
+                JOptionPane.showMessageDialog(this, "El kilometraje final no puede ser menor al kilometraje actual del vehículo ( " + auto.getKilometraje() + " )", "Kilometraje inválido", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
 
         Alquiler alquiler = agencia.devolverAuto(auto);
         if (alquiler != null) {
